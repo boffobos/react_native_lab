@@ -21,6 +21,7 @@ import {
 } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {Button, ThemeProvider, SearchBar} from 'react-native-elements';
+import { NavigationContainer } from '@react-navigation/native';
 
 import {
   Colors,
@@ -30,7 +31,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Theme } from './components';
+import { Theme, BottomTabs } from './exports';
 
 // const Section: React.FC<{
 //   title: string;
@@ -81,12 +82,12 @@ const theme = {
 }
 
   return (
+		<NavigationContainer>
     <SafeAreaProvider>
-        <SafeAreaView style={backgroundStyle}>
 					{/* <Theme> */}
 					<ThemeProvider theme={theme}>
 						<StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-						<ScrollView
+						{/* <ScrollView
 							contentInsetAdjustmentBehavior="automatic"
 							style={backgroundStyle}>
 							<Header />
@@ -98,12 +99,13 @@ const theme = {
 								<Button title='Submit' />
 								<SearchBar placeholder='Type here...' onChangeText={(e) => setSearch(e)} value={search}/>
 							</View>
-						</ScrollView>
-						<Button title='Cool' onPress={() => Alert.alert('hello!')}/>
+						</ScrollView> */}
+						{/* <Button title='Cool' onPress={() => Alert.alert('hello!')}/> */}
 					{/* </Theme> */}
 					</ThemeProvider>
-      </SafeAreaView>
+						<BottomTabs />
     </SafeAreaProvider>
+		</NavigationContainer>
   );
 };
 

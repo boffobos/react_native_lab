@@ -56,7 +56,6 @@
 		8D60C7BD43AD4C73B5C175C9 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		A3EAE46AA6294976AD8A8F31 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-spiral-spiralTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-spiral-spiralTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AEB30331BCA44C87920C0337 /* SFProRounded-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFProRounded-Bold.ttf"; path = "../App/Assets/Fonts/SFProRounded-Bold.ttf"; sourceTree = "<group>"; };
 		B0590CD61B0C42759855EF83 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		C0A881CF5CF3F2B244570E2A /* Pods-spiral.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spiral.debug.xcconfig"; path = "Target Support Files/Pods-spiral/Pods-spiral.debug.xcconfig"; sourceTree = "<group>"; };
 		CC236209595C4150B9CE017E /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
@@ -130,7 +129,6 @@
 		81640E8AC4BC4B33B3D34BF2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				AEB30331BCA44C87920C0337 /* SFProRounded-Bold.ttf */,
 				F2C9692819C540988139F77C /* SFProRounded-Light.ttf */,
 				54862CE7B25B4C61A236BB36 /* SFProRounded-Regular.ttf */,
 				B0590CD61B0C42759855EF83 /* AntDesign.ttf */,

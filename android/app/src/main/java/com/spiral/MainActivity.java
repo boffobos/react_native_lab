@@ -1,4 +1,5 @@
 package com.spiral;
+import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
 
@@ -12,4 +13,9 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "spiral";
   }
+
+	@Override
+protected void onCreate(Bundle savedInstanceState) {
+  super.onCreate(null);
+}
 }

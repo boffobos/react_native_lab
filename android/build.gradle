@@ -7,9 +7,6 @@ buildscript {
         compileSdkVersion = 30
         targetSdkVersion = 30
         ndkVersion = "21.4.7075529"
-				react = [
-					nodeExecutableAndArgs:  ["/usr/local/bin/node"]
-				]
     }
     repositories {
         google()
