@@ -2,7 +2,7 @@ import { StyleSheet, View, SafeAreaView } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Text, Avatar } from 'react-native-elements';
-import { PAYMENTS } from '../../../exports';
+import { PAYMENTS } from '@/config';
 
 export const Payments = () => {
 	return (

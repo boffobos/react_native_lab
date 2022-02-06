@@ -22,6 +22,7 @@ import {
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {Button, ThemeProvider, SearchBar} from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
+import { BlurView } from '@react-native-community/blur';
 
 import {
   Colors,
@@ -31,7 +32,7 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Theme, BottomTabs } from './exports';
+import { Theme, BottomTabs } from './App/exports';
 
 // const Section: React.FC<{
 //   title: string;
@@ -84,26 +85,10 @@ const theme = {
   return (
 		<NavigationContainer>
     <SafeAreaProvider>
-					{/* <Theme> */}
 					<ThemeProvider theme={theme}>
 						<StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-						{/* <ScrollView
-							contentInsetAdjustmentBehavior="automatic"
-							style={backgroundStyle}>
-							<Header />
-							<View
-								style={{
-									backgroundColor: isDarkMode ? Colors.black : Colors.white,
-								}}>
-								<Text style={styles.text}>Hello world!!! New spiral project.</Text>
-								<Button title='Submit' />
-								<SearchBar placeholder='Type here...' onChangeText={(e) => setSearch(e)} value={search}/>
-							</View>
-						</ScrollView> */}
-						{/* <Button title='Cool' onPress={() => Alert.alert('hello!')}/> */}
-					{/* </Theme> */}
-					</ThemeProvider>
 						<BottomTabs />
+					</ThemeProvider>
     </SafeAreaProvider>
 		</NavigationContainer>
   );

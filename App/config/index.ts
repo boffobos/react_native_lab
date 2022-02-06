@@ -1,7 +1,7 @@
 /* Application tabs */
 export const HOME = {
 	name: 'Home',
-	tabIcon: '@/Assets/Images/home.png',
+	tabIcon: '../Assets/Images/home.png',
 }
 export const ACCOUTS = {
 	name: 'Accounts',

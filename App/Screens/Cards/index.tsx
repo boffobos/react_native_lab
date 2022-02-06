@@ -2,7 +2,7 @@ import { StyleSheet, View, SafeAreaView } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Text, Avatar } from 'react-native-elements';
-import { CARDS } from '../../../exports';
+import { CARDS } from '@/config';
 
 export const Cards = () => {
 	return (

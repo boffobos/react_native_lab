@@ -2,7 +2,8 @@ import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Text, Avatar } from 'react-native-elements';
-import { HOME, PRIMARY_COLOR_LIGHT } from '../../../exports';
+import { HOME, PRIMARY_COLOR_LIGHT } from '../../config/index';
+import { BlurView } from '@react-native-community/blur';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,16 +20,29 @@ export const Home = () => {
 		<ScrollView>
 			<SafeAreaView style={styles.safe}>
 				<View style={styles.container}>
-					<Text style={styles.text}>Home</Text>
+					<Text style={styles.text}>Home1</Text>
 				</View>
 				<View style={styles.container}>
-					<Text style={styles.text}>Home</Text>
+					<Text style={styles.text}>Home2</Text>
 				</View>
 				<View style={styles.container}>
-					<Text style={styles.text}>Home</Text>
+			<BlurView
+				style={{
+					position: 'absolute',
+					top: 0,
+					left: 0,
+					right: 0,
+					bottom: 0,
+					zIndex:999
+				}}
+				blurType='light'
+				blurAmount={3}
+				reducedTransparencyFallbackColor='white'
+			/>
+					<Text style={styles.text}>Home3</Text>
 				</View>
 				<View style={styles.container}>
-					<Text style={styles.text}>Home</Text>
+					<Text style={styles.text}>Home4</Text>
 				</View>
 			</SafeAreaView>
 		</ScrollView>
