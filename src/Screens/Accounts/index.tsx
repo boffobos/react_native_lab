@@ -2,7 +2,7 @@ import { StyleSheet, View, SafeAreaView } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Text, Avatar } from 'react-native-elements';
-import { ACCOUTS } from '@/config';
+import { ACCOUTS, FONT_BOLD } from '../../config';
 
 export const Accounts = () => {
 	return (
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		textAlign: 'center',
-		fontFamily: 'SFRounded-bold',
+		fontFamily: FONT_BOLD,
 		fontSize: 30,
 	},
 	container: {

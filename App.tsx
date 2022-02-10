@@ -23,6 +23,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {Button, ThemeProvider, SearchBar} from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { BlurView } from '@react-native-community/blur';
+import { MyNavigation } from './src/Navigation';
 
 import {
   Colors,
@@ -32,35 +33,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Theme, BottomTabs } from './App/exports';
-
-// const Section: React.FC<{
-//   title: string;
-// }> = ({children, title}) => {
-//   const isDarkMode = useColorScheme() === 'dark';
-//   return (
-//     <View style={styles.sectionContainer}>
-//       <Text
-//         style={[
-//           styles.sectionTitle,
-//           {
-//             color: isDarkMode ? Colors.white : Colors.black,
-//           },
-//         ]}>
-//         {title}
-//       </Text>
-//       <Text
-//         style={[
-//           styles.sectionDescription,
-//           {
-//             color: isDarkMode ? Colors.light : Colors.dark,
-//           },
-//         ]}>
-//         {children}
-//       </Text>
-//     </View>
-//   );
-// };
+import { Theme, BottomTabs } from './src/exports';
+import { FONT_REGULAR } from './src/config';
 
 const App = () => {
 	const [search, setSearch] = React.useState('');
@@ -84,12 +58,13 @@ const theme = {
 
   return (
 		<NavigationContainer>
-    <SafeAreaProvider>
-					<ThemeProvider theme={theme}>
-						<StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-						<BottomTabs />
-					</ThemeProvider>
-    </SafeAreaProvider>
+			<SafeAreaProvider>
+				<ThemeProvider theme={theme}>
+					<StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+					<MyNavigation />
+					{/* <BottomTabs /> */}
+				</ThemeProvider>
+			</SafeAreaProvider>
 		</NavigationContainer>
   );
 };
@@ -103,7 +78,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 50,
     fontSize: 32,
-		fontFamily: 'SFRounded-regular',
+		fontFamily: FONT_REGULAR,
   },
 
   sectionTitle: {

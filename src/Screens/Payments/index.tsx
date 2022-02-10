@@ -2,14 +2,14 @@ import { StyleSheet, View, SafeAreaView } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Text, Avatar } from 'react-native-elements';
-import { GIVING } from '@/config';
+import { FONT_BOLD, PAYMENTS } from '../../config';
 
-export const Giving = () => {
+export const Payments = () => {
 	return (
 		<SafeAreaView style={styles.safe}>
-		<View style={styles.container}>
-			<Text style={styles.text}>Giving</Text>
-		</View>
+			<View style={styles.container}>
+				<Text style={styles.text}>Coming soon</Text>
+			</View>
 		</SafeAreaView>
 	);
 }
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		textAlign: 'center',
-		fontFamily: 'SFRounded-bold',
+		fontFamily: FONT_BOLD,
 		fontSize: 30,
 	}
 });

@@ -1,9 +1,10 @@
 import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Text, Avatar } from 'react-native-elements';
-import { HOME, PRIMARY_COLOR_LIGHT } from '../../config/index';
-import { BlurView } from '@react-native-community/blur';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import { Text  } from 'react-native-elements';
+import { FONT_BOLD, HOME, PRIMARY_COLOR_LIGHT, SAVING } from '../../config/index';
+import { Button } from 'react-native-elements/dist/buttons/Button';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,10 +16,14 @@ const HomeScreen = () => {
 	);
 }
 
-export const Home = () => {
+export const Home = ({navigation}) => {
+	// const height = useBottomTabBarHeight();
 	return (
-		<ScrollView>
-			<SafeAreaView style={styles.safe}>
+		<SafeAreaView style={styles.safe}>
+			<ScrollView>
+				<View >
+					<Button style={styles.btn} title='Savings' onPress={() => navigation.navigate(SAVING.name)} />
+				</View>
 				<View style={styles.container}>
 					<Text style={styles.text}>Home1</Text>
 				</View>
@@ -26,26 +31,13 @@ export const Home = () => {
 					<Text style={styles.text}>Home2</Text>
 				</View>
 				<View style={styles.container}>
-			<BlurView
-				style={{
-					position: 'absolute',
-					top: 0,
-					left: 0,
-					right: 0,
-					bottom: 0,
-					zIndex:999
-				}}
-				blurType='light'
-				blurAmount={3}
-				reducedTransparencyFallbackColor='white'
-			/>
 					<Text style={styles.text}>Home3</Text>
 				</View>
 				<View style={styles.container}>
 					<Text style={styles.text}>Home4</Text>
 				</View>
-			</SafeAreaView>
-		</ScrollView>
+			</ScrollView>
+		</SafeAreaView>
 	);
 }
 
@@ -64,7 +56,15 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		textAlign: 'center',
-		fontFamily: 'SFRounded-bold',
+		fontFamily: FONT_BOLD,
 		fontSize: 30,
+	},
+	btn: {
+		color: 'black',
+		backgroundColor: 'orange',
+		width: '33%',
+		alignSelf: 'center',
+		margin: 20,
+
 	}
 });
