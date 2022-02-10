@@ -23,8 +23,8 @@ export const CARDS = {
 	name: 'Cards',
 	tabIcon: '../Assets/Images/cards.png',
 }
-export const SAVING = {
-	name: 'Saving',
+export const SAVINGS = {
+	name: 'Savings',
 	tabIcon: 'none',
 }
 export const BOTTOM_TABS = {

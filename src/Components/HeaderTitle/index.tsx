@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const HeaderTitle = ({ img, title = APP.name, subtitle }:Props) => {
-	return (<View /*style={styles.container}*/>
+	return (<View style={styles.container}>
 		<View style={styles.titleContainer} >
 			{img ? <Image source={img} style={styles.headerIcon} /> : null}
 			<Text style={styles.title}> {title}</Text>
@@ -20,12 +20,12 @@ export const HeaderTitle = ({ img, title = APP.name, subtitle }:Props) => {
 
  const styles = StyleSheet.create({
 	container: {
-		display: 'flex',
+		// display: 'flex',
 		// flexDirection: 'column',
-		textAlign: 'center',
-		alignContent: 'center',
-		justifyContent: 'center',
-		width: 200,
+		// textAlign: 'center',
+		// alignContent: 'center',
+		// justifyContent: 'center',
+		// width: 200,
 	},
 	headerIcon: {
 		tintColor: 'white',
@@ -33,8 +33,8 @@ export const HeaderTitle = ({ img, title = APP.name, subtitle }:Props) => {
 		height: 20
 	},
 	titleContainer: {
-		// flex: 1,
-		// flexDirection: 'row',
+		flex: 1,
+		flexDirection: 'row',
 		alignContent: 'center',
 		alignItems: 'center',
 		color: 'white',
@@ -50,7 +50,7 @@ export const HeaderTitle = ({ img, title = APP.name, subtitle }:Props) => {
 	subtitle: {
 	 color: 'white',
 	 fontSize: 12,
-	 alignSelf: 'center',
+	//  alignSelf: 'center',
 	}
  })
 
