@@ -1,10 +1,10 @@
 import { BottomTabNavigationOptions, createBottomTabNavigator, useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { BlurView } from '@react-native-community/blur';
 import { ACCOUNTS, APP, CARDS, GIVING, HOME, PAYMENTS, PRIMARI_COLOR, SECONDARY_COLOR } from '../../config';
-import {Accounts, Cards, Giving, Home, Payments, HeaderTitle, HeaderAvatar} from '../../exports'
+import {Accounts, Cards, Giving, Home, Payments, HeaderTitle, HeaderAvatar, HabmburgerButton, BackButton } from '../../exports'
 import React from 'react';
 import { Image, Text } from 'react-native-elements';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { ParamListBase, RouteProp } from '@react-navigation/native';
 // import {ACCOUNTS_LOGO_SOLID, HOME_LOGO_REGULAR, HOME_LOGO_SOLID} from '../../Assets/index';
 
@@ -51,16 +51,26 @@ const iconsForTabBar = (route: RouteProp<ParamListBase, string>, focused: boolea
 // }
 
 const logo = require('../../Assets/Images/heart.png');
+const HeaderButton = () => {
+	return (
+		<TouchableOpacity onPress={() => alert('Hello!')} style={{height: '100%',}}>
+			<Image source={require('../../Assets/Images/burgerMenuIcon.png')} style={{ width: 20, height: 20, marginLeft: 15}}/>
+		</TouchableOpacity>
+	);
+}
 
 const homePageHeaderOptions: BottomTabNavigationOptions = {
 	headerTitle: () => <HeaderTitle img={logo} title={APP.name}/>,
-	headerRight: () => <HeaderAvatar />
+	headerRight: () => <HeaderAvatar />,
+	headerLeft: () => <HabmburgerButton />,
 	// headerStyle: {backgroundColor: PRIMARI_COLOR},
 }
 
 const accountsPageHeaderOptions: BottomTabNavigationOptions = {
 	headerTitle: () => <HeaderTitle title={ACCOUNTS.name} />,
 	headerRight: () => <HeaderAvatar />,
+	// headerLeft: () => <BackButton />,
+
 
 }
 
@@ -82,6 +92,8 @@ export const BottomTabs = () => {
 				},
 				headerStyle: {backgroundColor: PRIMARI_COLOR},
 				headerTitleStyle: {color: 'white'},
+				headerBackImage: require('../../Assets/Images/back.png'),
+				headerLeft: () => <BackButton />,
 		})}>
 			<Tabs.Screen name={HOME.name} component={Home} options={homePageHeaderOptions}/>
 			<Tabs.Screen name={ACCOUNTS.name} component={Accounts} options={accountsPageHeaderOptions}/>
