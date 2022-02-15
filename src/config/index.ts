@@ -7,7 +7,7 @@ export const HOME = {
 	name: 'Home',
 	tabIcon: '../Assets/Images/home.png',
 }
-export const ACCOUTS = {
+export const ACCOUNTS = {
 	name: 'Accounts',
 	tabIcon: '../Assets/Images/accounts.png',
 }
@@ -27,6 +27,10 @@ export const SAVINGS = {
 	name: 'Savings',
 	tabIcon: 'none',
 }
+export const CHECKING = {
+	name: 'Checking',
+	tabIcon: 'none',
+}
 export const BOTTOM_TABS = {
 	name: 'Tabs',
 	tabIcon: 'none',
@@ -37,5 +41,5 @@ export const PRIMARY_COLOR_LIGHT = '#E381C3';
 export const SECONDARY_COLOR = '#3D3238';
 
 export const FONT_BOLD = 'SFRounded-Bold';
-export const FONT_REGULAR = 'SFProRounded-Regular';
+export const FONT_REGULAR = 'SFRounded-regular';
 export const FONT_LIGHT = 'SFRounded-Light';

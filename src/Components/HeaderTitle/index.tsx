@@ -14,43 +14,43 @@ export const HeaderTitle = ({ img, title = APP.name, subtitle }:Props) => {
 			{img ? <Image source={img} style={styles.headerIcon} /> : null}
 			<Text style={styles.title}> {title}</Text>
 		</View>
-		<Text style={styles.subtitle}>{subtitle}</Text>
+			<Text style={styles.subtitle}>{subtitle}</Text>
 		</View>)
 }
 
  const styles = StyleSheet.create({
 	container: {
-		// display: 'flex',
-		// flexDirection: 'column',
-		// textAlign: 'center',
-		// alignContent: 'center',
-		// justifyContent: 'center',
-		// width: 200,
-	},
-	headerIcon: {
-		tintColor: 'white',
-		width: 20,
-		height: 20
+		flex: 1,
+		// width: '100%',
+		maxWidth: 250,
+		display: 'flex',
+		alignContent: 'space-between',
+		alignItems: 'center',
+		justifyContent: 'space-between',
 	},
 	titleContainer: {
 		flex: 1,
+		display: 'flex',
 		flexDirection: 'row',
 		alignContent: 'center',
 		alignItems: 'center',
 		color: 'white',
 		fontFamily: FONT_REGULAR,
 	},
+	headerIcon: {
+		tintColor: 'white',
+		width: 20,
+		height: 20,
+		marginRight: 5,
+	},
  	title: {
  		color: 'white',
- 		// fontFamily: 'SFRounded-regular',
+ 		fontFamily: FONT_REGULAR,
  		fontSize: 18,
- 		// alignSelf: 'center',
- 		textAlign: 'center'
  	},
 	subtitle: {
 	 color: 'white',
 	 fontSize: 12,
-	//  alignSelf: 'center',
 	}
  })
 

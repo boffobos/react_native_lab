@@ -1,7 +1,7 @@
 import { BottomTabNavigationOptions, createBottomTabNavigator, useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { BlurView } from '@react-native-community/blur';
-import { ACCOUTS, APP, CARDS, GIVING, HOME, PAYMENTS, PRIMARI_COLOR, SECONDARY_COLOR } from '../../config';
-import {Accounts, Cards, Giving, Home, Payments, HeaderTitle} from '../../exports'
+import { ACCOUNTS, APP, CARDS, GIVING, HOME, PAYMENTS, PRIMARI_COLOR, SECONDARY_COLOR } from '../../config';
+import {Accounts, Cards, Giving, Home, Payments, HeaderTitle, HeaderAvatar} from '../../exports'
 import React from 'react';
 import { Image, Text } from 'react-native-elements';
 import { StyleSheet, View, Dimensions } from 'react-native';
@@ -20,7 +20,7 @@ const iconsForTabBar = (route: RouteProp<ParamListBase, string>, focused: boolea
 			// icon = !focused ? <Image source={HOME_LOGO_REGULAR} containerStyle={styles.tabIconContainer} style={styles.icon} />
 			// : <Image source={HOME_LOGO_SOLID} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
 			break;
-		case ACCOUTS.name:
+		case ACCOUNTS.name:
 			icon = !focused ? <Image source={require('../../Assets/Images/accounts.png')} containerStyle={styles.tabIconContainer} style={styles.icon} />
 			: <Image source={require('../../Assets/Images/accounts@3x-solid.png')} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
 			break;
@@ -54,7 +54,14 @@ const logo = require('../../Assets/Images/heart.png');
 
 const homePageHeaderOptions: BottomTabNavigationOptions = {
 	headerTitle: () => <HeaderTitle img={logo} title={APP.name}/>,
-	headerStyle: {backgroundColor: PRIMARI_COLOR},
+	headerRight: () => <HeaderAvatar />
+	// headerStyle: {backgroundColor: PRIMARI_COLOR},
+}
+
+const accountsPageHeaderOptions: BottomTabNavigationOptions = {
+	headerTitle: () => <HeaderTitle title={ACCOUNTS.name} />,
+	headerRight: () => <HeaderAvatar />,
+
 }
 
 export const BottomTabs = () => {
@@ -72,10 +79,12 @@ export const BottomTabs = () => {
 				tabBarStyle: styles.tabBarStyle,
 				tabBarItemStyle: {
 					backgroundColor: 'rgba(255, 0, 0, 0)',
-				}
+				},
+				headerStyle: {backgroundColor: PRIMARI_COLOR},
+				headerTitleStyle: {color: 'white'},
 		})}>
 			<Tabs.Screen name={HOME.name} component={Home} options={homePageHeaderOptions}/>
-			<Tabs.Screen name={ACCOUTS.name} component={Accounts} />
+			<Tabs.Screen name={ACCOUNTS.name} component={Accounts} options={accountsPageHeaderOptions}/>
 			<Tabs.Screen name={GIVING.name} component={Giving} />
 			<Tabs.Screen name={PAYMENTS.name} component={Payments} />
 			<Tabs.Screen name={CARDS.name} component={Cards} />

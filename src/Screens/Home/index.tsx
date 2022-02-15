@@ -3,7 +3,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { Text  } from 'react-native-elements';
-import { FONT_BOLD, HOME, PRIMARY_COLOR_LIGHT, SAVINGS } from '../../config/index';
+import { FONT_BOLD, HOME, PRIMARY_COLOR_LIGHT, SAVINGS, CHECKING } from '../../config/index';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 
 const Stack = createNativeStackNavigator();
@@ -22,7 +22,8 @@ export const Home = ({navigation}) => {
 		<SafeAreaView style={styles.safe}>
 			<ScrollView>
 				<View >
-					<Button style={styles.btn} title='Savings' onPress={() => navigation.navigate(SAVINGS.name)} />
+					<Button style={styles.btn} title={SAVINGS.name} onPress={() => navigation.navigate(SAVINGS.name)} />
+					<Button style={styles.btn} title={CHECKING.name} onPress={() => navigation.navigate(CHECKING.name)} />
 				</View>
 				<View style={styles.container}>
 					<Text style={styles.text}>Home1</Text>
