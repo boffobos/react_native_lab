@@ -94,6 +94,7 @@ export const BottomTabs = () => {
 				headerTitleStyle: {color: 'white'},
 				headerBackImage: require('../../Assets/Images/back.png'),
 				headerLeft: () => <BackButton />,
+				
 		})}>
 			<Tabs.Screen name={HOME.name} component={Home} options={homePageHeaderOptions}/>
 			<Tabs.Screen name={ACCOUNTS.name} component={Accounts} options={accountsPageHeaderOptions}/>

@@ -2,7 +2,7 @@ import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
-import { Text  } from 'react-native-elements';
+import { Text } from 'react-native-elements';
 import { FONT_BOLD, HOME, PRIMARY_COLOR_LIGHT, SAVINGS, CHECKING } from '../../config/index';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
 		fontSize: 30,
 	},
 	btn: {
-		color: 'black',
+		// color: 'black',
 		backgroundColor: 'orange',
 		width: '33%',
 		alignSelf: 'center',

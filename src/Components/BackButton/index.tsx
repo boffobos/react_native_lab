@@ -16,7 +16,10 @@ export const BackButton = () => {
 
 const style = StyleSheet.create({
 	container: {
-		height: '100%'
+		height: '100%',
+		display: 'flex',
+		justifyContent: 'center',
+
 	},
 	image: {
 		width: 20,
