@@ -35,6 +35,11 @@ export const BOTTOM_TABS = {
 	name: 'Tabs',
 	tabIcon: 'none',
 }
+export const SIGNIN = {
+	name: 'Signin',
+	tabIcon: 'none',
+}
+
 /* Style constants */
 export const PRIMARI_COLOR = '#D4368F';
 export const PRIMARY_COLOR_LIGHT = '#E381C3';

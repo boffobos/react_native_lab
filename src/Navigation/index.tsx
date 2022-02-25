@@ -1,9 +1,9 @@
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
-import { HOME, ACCOUNTS, GIVING, PAYMENTS, CARDS, SAVINGS, BOTTOM_TABS, PRIMARI_COLOR, CHECKING } from '../config';
+import { HOME, ACCOUNTS, GIVING, PAYMENTS, CARDS, SAVINGS, BOTTOM_TABS, PRIMARI_COLOR, CHECKING, SIGNIN } from '../config';
 import React from 'react';
 // import { Savings, BottomTabs, HeaderTitle } from '../exports';
 import { BottomTabs } from '../Navigation/BottomTabs';
-import { Savings, Checking, HeaderAvatar, BackButton } from '../exports';
+import { Savings, Checking, HeaderAvatar, BackButton, Signin } from '../exports';
 import { HeaderTitle } from '../Components/HeaderTitle';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import { Image } from 'react-native';
@@ -39,10 +39,11 @@ const headerLeftButton = (func: any) => {
 
 export const MyNavigation = () => {
 	return (
-		<Stack.Navigator screenOptions={{headerStyle: {backgroundColor: PRIMARI_COLOR, }, }} >
+		<Stack.Navigator initialRouteName='Signin' screenOptions={{headerStyle: {backgroundColor: PRIMARI_COLOR, }, }} >
 			<Stack.Screen name={BOTTOM_TABS.name} component={BottomTabs} options={{headerShown: false,}} />
 			<Stack.Screen name={SAVINGS.name} component={Savings} options={({route}) => pageHeaderOptions(SAVINGS.name, route.params.subtitle)} />
 			<Stack.Screen name={CHECKING.name} component={Checking} options={({route}) => pageHeaderOptions(CHECKING.name, route.params.subtitle)} />
+			<Stack.Screen name={SIGNIN.name} component={Signin} />
 		</Stack.Navigator>
 	)
 }
