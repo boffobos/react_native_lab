@@ -60,9 +60,9 @@ const HeaderButton = () => {
 }
 
 const homePageHeaderOptions: BottomTabNavigationOptions = {
+	headerLeft: () => <HabmburgerButton />,
 	headerTitle: () => <HeaderTitle img={logo} title={APP.name}/>,
 	headerRight: () => <HeaderAvatar />,
-	headerLeft: () => <HabmburgerButton />,
 	// headerStyle: {backgroundColor: PRIMARI_COLOR},
 }
 
@@ -94,7 +94,7 @@ export const BottomTabs = () => {
 				headerTitleStyle: {color: 'white'},
 				headerBackImage: require('../../Assets/Images/back.png'),
 				headerLeft: () => <BackButton />,
-				
+
 		})}>
 			<Tabs.Screen name={HOME.name} component={Home} options={homePageHeaderOptions}/>
 			<Tabs.Screen name={ACCOUNTS.name} component={Accounts} options={accountsPageHeaderOptions}/>

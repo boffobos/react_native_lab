@@ -22,8 +22,8 @@ export const Home = ({navigation}) => {
 		<SafeAreaView style={styles.safe}>
 			<ScrollView>
 				<View >
-					<Button style={styles.btn} title={SAVINGS.name} onPress={() => navigation.navigate(SAVINGS.name)} />
-					<Button style={styles.btn} title={CHECKING.name} onPress={() => navigation.navigate(CHECKING.name)} />
+					<Button style={styles.btn} title={SAVINGS.name} onPress={() => navigation.navigate(SAVINGS.name, {subtitle: 'best test sub'})} />
+					<Button style={styles.btn} title={CHECKING.name} onPress={() => navigation.navigate(CHECKING.name, {subtitle: 'apart test sub'})} />
 				</View>
 				<View style={styles.container}>
 					<Text style={styles.text}>Home1</Text>

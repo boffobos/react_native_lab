@@ -20,7 +20,7 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import {Button, ThemeProvider, SearchBar} from 'react-native-elements';
+import {Button, ThemeProvider } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { BlurView } from '@react-native-community/blur';
 import { MyNavigation } from './src/Navigation';
@@ -33,11 +33,11 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { Theme, BottomTabs } from './src/exports';
+import { generalTheme } from './src/Theme';
+import { BottomTabs } from './src/exports';
 import { FONT_REGULAR } from './src/config';
 
 const App = () => {
-	const [search, setSearch] = React.useState('');
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -45,23 +45,25 @@ const App = () => {
   };
 
 const theme = {
-	Button: {
-		raised: true,
-		style: {
-		width: "33%",
-    alignSelf: 'center',
-    marginTop: 24,
-		marginBottom: 24,
-		}
-	},
+	// // Button: {
+	// // 	raised: true,
+	// // 	style: {
+	// // 	width: "33%",
+  // //   alignSelf: 'center',
+  // //   marginTop: 24,
+	// // 	marginBottom: 24,
+	// // 	}
+	// },
 }
 
   return (
 		<NavigationContainer>
 			<SafeAreaProvider>
-				<ThemeProvider theme={theme}>
+				<ThemeProvider theme={generalTheme}>
+				{/* <GlobalTheme> */}
 					<StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
 					<MyNavigation />
+				{/* </GlobalTheme> */}
 					{/* <BottomTabs /> */}
 				</ThemeProvider>
 			</SafeAreaProvider>

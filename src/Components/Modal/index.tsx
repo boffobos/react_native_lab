@@ -1,27 +1,40 @@
+import { FONT_REGULAR, PRIMARI_COLOR } from "../../config";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import { Overlay, Text } from "react-native-elements";
-import { Button } from "react-native-elements";
+import { Button } from "react-native-elements/dist/buttons/Button";
 
-export const Modal = (state: boolean) => {
-	const [isOpen, setIsOpen] = React.useState(state);
-	const toggleState = () => {
-		setIsOpen(!isOpen);
-	}
+
+interface ModalComponentProps {
+	isOpen: boolean,
+	close?: ()=>void,
+	children: JSX.Element[],
+	style?: StyleProp<ViewStyle>
+};
+
+
+export const Modal: React.FC<ModalComponentProps> = ({isOpen, children, close, style}:ModalComponentProps) => {
+
 	return (
-		<Overlay isVisible={state} style={style.modal}>
-			<View>
-				<Text>Are you sure?</Text>
-				<Button title='Yes' onPress={toggleState} />
-			</View>
+		<Overlay isVisible={isOpen} onBackdropPress={close} overlayStyle={style || styles.container} backdropStyle={styles.backdrop} >
+				{children}
 		</Overlay>
 	);
 }
 
-const style = StyleSheet.create({
-	modal: {
-		// position: 'absolute',
-		// top: '50%',
-		// left: '50%',
-	}
+const styles = StyleSheet.create({
+
+	container: {
+		display: 'flex',
+		backgroundColor: PRIMARI_COLOR,
+		width: '70%',
+		height: '40%',
+		alignSelf: 'center',
+		justifyContent: 'center',
+		padding: 20,
+		borderRadius: 15,
+	},
+	backdrop: {
+		backgroundColor: '#0007',
+	},
 })

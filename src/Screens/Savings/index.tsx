@@ -4,7 +4,8 @@ import { Text, View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 
-export const Savings = () => {
+export const Savings = ({route}) => {
+	const {subtitle} = route.params;
 	return (
 		<SafeAreaView style={styles.safe}>
 			<View style={styles.container}>

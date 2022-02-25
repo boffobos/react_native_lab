@@ -9,8 +9,8 @@ export const Accounts = ({navigation}) => {
 	return (
 		<SafeAreaView style={styles.safe}>
 			<View style={styles.btnContainer} >
-				<Button style={styles.btn} title={SAVINGS.name} onPress={() => navigation.navigate(SAVINGS.name)} />
-				<Button style={styles.btn} title={CHECKING.name} onPress={() => navigation.navigate(CHECKING.name)} />
+				<Button style={styles.btn} title={SAVINGS.name} onPress={() => navigation.navigate(SAVINGS.name, {subtitle: 'test1'})} />
+				<Button style={styles.btn} title={CHECKING.name} onPress={() => navigation.navigate(CHECKING.name, {subtitle: 'test2'})} />
 			</View>
 			<View style={styles.container}>
 				<Text style={styles.text}>Accounts</Text>

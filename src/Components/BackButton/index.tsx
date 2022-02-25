@@ -4,8 +4,10 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import { Image } from "react-native-elements/dist/image/Image";
 import { useNavigation } from "@react-navigation/native";
 
+
+
 export const BackButton = () => {
-	// const navigation = useNavigation();
+	// const nav = useNavigation();
 
 	return (
 		<TouchableOpacity style={style.container}>
