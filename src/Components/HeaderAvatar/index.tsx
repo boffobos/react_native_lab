@@ -42,7 +42,6 @@ export const HeaderAvatar = () => {
 
 const style = StyleSheet.create({
 	container: {
-		flex: 1,
 		display: 'flex',
 		height: '100%',
 		marginRight: 15,

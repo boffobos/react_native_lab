@@ -20,10 +20,11 @@ const subtitle = 'rest test subs';
 
 const pageHeaderOptions = (title: string, subtitle: string): NativeStackNavigationOptions => {
 	return ({
-		headerTitle: () => <HeaderTitle title={title} subtitle={subtitle} />,
+		// headerTitle: () => <HeaderTitle title={title} subtitle={subtitle} />,
 		headerRight: () => <HeaderAvatar />,
 		headerBackImageSource: require('../Assets/Images/back.png'),
 		headerTintColor: 'white',
+		headerBackTitle: '',
 
 	// headerStyle: {backgroundColor: PRIMARI_COLOR},
 	// headerTitleStyle: {color: 'red'}
