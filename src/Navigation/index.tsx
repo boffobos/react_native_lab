@@ -1,12 +1,10 @@
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
-import { HOME, ACCOUNTS, GIVING, PAYMENTS, CARDS, SAVINGS, BOTTOM_TABS, PRIMARI_COLOR, CHECKING, SIGNIN } from '../config';
+import { HOME, SAVINGS, BOTTOM_TABS, PRIMARI_COLOR, CHECKING, SIGNIN } from '../config';
 import React from 'react';
-// import { Savings, BottomTabs, HeaderTitle } from '../exports';
 import { BottomTabs } from '../Navigation/BottomTabs';
 import { Savings, Checking, HeaderAvatar, BackButton, Signin } from '../exports';
 import { HeaderTitle } from '../Components/HeaderTitle';
 import { Button } from 'react-native-elements/dist/buttons/Button';
-import { Image } from 'react-native';
 
 
 const Stack = createNativeStackNavigator();
@@ -20,7 +18,7 @@ const subtitle = 'rest test subs';
 
 const pageHeaderOptions = (title: string, subtitle: string): NativeStackNavigationOptions => {
 	return ({
-		// headerTitle: () => <HeaderTitle title={title} subtitle={subtitle} />,
+		headerTitle: () => <HeaderTitle title={title} subtitle={subtitle} />,
 		headerRight: () => <HeaderAvatar />,
 		headerBackImageSource: require('../Assets/Images/back.png'),
 		headerTintColor: 'white',

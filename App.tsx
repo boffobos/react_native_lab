@@ -33,6 +33,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { Provider } from 'react-redux';
+import { store } from './src/Redux/store';
+
 import { generalTheme } from './src/Theme';
 import { BottomTabs } from './src/exports';
 import { FONT_REGULAR } from './src/config';
@@ -57,17 +60,19 @@ const theme = {
 }
 
   return (
-		<NavigationContainer>
-			<SafeAreaProvider>
-				<ThemeProvider theme={generalTheme}>
-				{/* <GlobalTheme> */}
-					<StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-					<MyNavigation />
-				{/* </GlobalTheme> */}
-					{/* <BottomTabs /> */}
-				</ThemeProvider>
-			</SafeAreaProvider>
-		</NavigationContainer>
+		<Provider store={store}>
+			<NavigationContainer>
+				<SafeAreaProvider>
+					<ThemeProvider theme={generalTheme}>
+					{/* <GlobalTheme> */}
+						<StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+						<MyNavigation />
+					{/* </GlobalTheme> */}
+						{/* <BottomTabs /> */}
+					</ThemeProvider>
+				</SafeAreaProvider>
+			</NavigationContainer>
+		</Provider>
   );
 };
 
