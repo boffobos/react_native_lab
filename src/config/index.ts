@@ -41,9 +41,10 @@ export const SIGNIN = {
 }
 
 /* Style constants */
-export const PRIMARI_COLOR = '#D4368F';
-export const PRIMARY_COLOR_LIGHT = '#E381C3';
-export const SECONDARY_COLOR = '#3D3238';
+export const PRIMARI_COLOR = '#d4368f';
+export const PRIMARY_COLOR_LIGHT = '#e381c3';
+export const SECONDARY_COLOR = '#3d3238';
+export const BORDER_COLOR = '#dbdfe4'
 
 export const FONT_BOLD = 'SFRounded-Bold';
 export const FONT_REGULAR = 'SFRounded-regular';
