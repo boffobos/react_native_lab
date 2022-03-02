@@ -1,17 +1,20 @@
 import React from "react";
-import { TextInput, TouchableOpacity, StyleSheet, View } from "react-native";
+import { TextInput, TouchableOpacity, StyleSheet, View, Alert } from "react-native";
 import { Text, Button } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BORDER_COLOR, PRIMARI_COLOR, FONT_REGULAR } from "../../config";
 import { userLogin } from '../../exports';
 import { Formik } from "formik";
 import  * as Yup from 'yup';
+import { useAppSelector, useAppDispatch } from "../../hooks";
 
 
 
 export const Signin = () => {
 	const [email, setEmail] = React.useState('');
 	const [password, setPassword] = React.useState('');
+	const userName = useAppSelector(state => state.users.userName);
+	const dispatch = useAppDispatch();
 	const initVal = {
 		email: '',
 		password: '',
@@ -25,7 +28,9 @@ export const Signin = () => {
 		password: Yup.string().required('Required!'),
 	})
 	React.useEffect(() => {
-
+		// if(email && password) setTimeout(() => Alert.alert('Done!'), 1000);
+		dispatch(userLogin({userName: email, jwt: 'adfdff4fd5876aqdf45d8a6'}));
+		setTimeout(() => console.log(userName), 500);
 	}, [email, password])
 
 	return (
@@ -33,7 +38,7 @@ export const Signin = () => {
 			<View style={{height: '100%', display: 'flex', justifyContent: 'space-between'}}>
 				{/* top part of the screen */}
 				<Formik validationSchema={validationScheme} initialValues={initVal} onSubmit={submit}>
-					{({handleSubmit, values, handleBlur, handleChange, errors, touched}) => (
+					{({handleSubmit, values, handleChange, errors, touched}) => (
 					<View style={style.topContainer}>
 						<View style={style.pageName}>
 							<Text style={style.headerText}>Login</Text>
@@ -48,7 +53,7 @@ export const Signin = () => {
 								<TextInput style={style.input} value={values.password} autoCapitalize='none' secureTextEntry={true} onChangeText={handleChange('password')} placeholder="Password" />
 								{touched.password && errors.password ? <Text style={style.formErrorLabel}>{errors.password}</Text> : null }
 									<View style={style.fgPassword}>
-										<TouchableOpacity onPress={() => alert('hello!')}>
+										<TouchableOpacity onPress={() => Alert.alert('hello!')}>
 											<Text style={style.fgPassText}>FORGOT PASSWORD</Text>
 										</TouchableOpacity>
 									</View>

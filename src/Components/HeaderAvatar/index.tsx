@@ -4,16 +4,26 @@ import { Image } from "react-native-elements/dist/image/Image";
 import { ListItem, Text } from "react-native-elements";
 import { Button } from "react-native-elements/dist/buttons/Button";
 import { Modal } from '../components';
-import { FONT_REGULAR, PRIMARY_COLOR_LIGHT } from "../../config";
+import { FONT_REGULAR, PRIMARY_COLOR_LIGHT, SIGNIN } from "../../config";
+import { useAppDispatch } from "../../hooks";
+import { userLogout } from "../../exports";
+import { useNavigation } from "@react-navigation/native";
 
 const img = require('../../Assets/Images/oval.png');
 
 export const HeaderAvatar = () => {
 	const [isOpen, setIsOpen] = React.useState(false);
 	// const [isOpenDropdown, setIsOpenDropdown] = React.useState(false);
+	const navgator = useNavigation();
+	const dispatch = useAppDispatch();
 	const toggle = (): void => {
 		setIsOpen(!isOpen);
 	};
+	const logout = (): void => {
+		setTimeout(() => dispatch(userLogout()), 500);
+		setIsOpen(!isOpen);
+		// navgator.navigate({name: SIGNIN.name});
+	}
 	// const toggleDropdown = (): void => {
 	// 	setIsOpenDropdown(!isOpenDropdown);
 	// };
@@ -35,7 +45,7 @@ export const HeaderAvatar = () => {
 						<Text style={style.textHead}>Log out</Text>
 						<Text style={style.textAsk}>Are you sure?</Text>
 					</View>
-					<Button title={'Yes'} style={style.btn} onPress={toggle}/>
+					<Button title={'Yes'} style={style.btn} onPress={logout}/>
 			</Modal>
 		</View>
 	)

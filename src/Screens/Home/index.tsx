@@ -1,9 +1,8 @@
 import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { Text } from 'react-native-elements';
-import { FONT_BOLD, HOME, PRIMARY_COLOR_LIGHT, SAVINGS, CHECKING } from '../../config/index';
+import { FONT_BOLD, PRIMARY_COLOR_LIGHT, SAVINGS, CHECKING } from '../../config/index';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import { ParamListBase } from '@react-navigation/native';
 

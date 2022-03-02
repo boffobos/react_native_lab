@@ -1,4 +1,4 @@
-import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IUserState {
 	userName: string | null;
@@ -8,8 +8,7 @@ interface IUserState {
 
 interface IUserAction {
 	userName: string,
-	loggedInTime: Date | null,
-	jwt: string | null
+	jwt: string
 };
 
 const initialState:IUserState = {
