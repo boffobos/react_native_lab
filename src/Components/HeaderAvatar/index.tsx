@@ -1,23 +1,35 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { Image } from "react-native-elements/dist/image/Image";
-import { Overlay, Text } from "react-native-elements";
+import { ListItem, Text } from "react-native-elements";
 import { Button } from "react-native-elements/dist/buttons/Button";
 import { Modal } from '../components';
-import { FONT_REGULAR, PRIMARY_COLOR_LIGHT, SECONDARY_COLOR } from "../../config";
+import { FONT_REGULAR, PRIMARY_COLOR_LIGHT } from "../../config";
 
 const img = require('../../Assets/Images/oval.png');
 
 export const HeaderAvatar = () => {
 	const [isOpen, setIsOpen] = React.useState(false);
+	// const [isOpenDropdown, setIsOpenDropdown] = React.useState(false);
 	const toggle = (): void => {
 		setIsOpen(!isOpen);
-	}
+	};
+	// const toggleDropdown = (): void => {
+	// 	setIsOpenDropdown(!isOpenDropdown);
+	// };
 	return (
 		<View style={style.container}>
 			<TouchableOpacity onPress={toggle}>
 				<Image source={img} style={style.image}/>
 			</TouchableOpacity>
+			{/* <Modal style={style.dropdown} isOpen={isOpenDropdown} close={toggleDropdown}>
+				<ListItem>
+					<ListItem.Content>
+						<ListItem.Title onPress={toggleDropdown}>Logout</ListItem.Title>
+						<ListItem.Title onPress={toggle}>Open modal</ListItem.Title>
+					</ListItem.Content>
+				</ListItem>
+			</Modal> */}
 			<Modal isOpen={isOpen} close={toggle} style={style.modal}>
 					<View style={style.modalTextContainer}>
 						<Text style={style.textHead}>Log out</Text>
@@ -25,17 +37,6 @@ export const HeaderAvatar = () => {
 					</View>
 					<Button title={'Yes'} style={style.btn} onPress={toggle}/>
 			</Modal>
-			{/* <Overlay isVisible={isOpen} onBackdropPress={toggle} >
-				<Text>Modal window</Text>
-				<Button
-                title={'React Native Elements'}
-                containerStyle={{
-                  width: 200,
-                  marginHorizontal: 50,
-                  marginVertical: 10,
-                }}
-              />
-			</Overlay> */}
 		</View>
 	)
 }
@@ -48,6 +49,13 @@ const style = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'flex-start',
 	},
+	dropdown: {
+		width: 180,
+		position: 'absolute',
+		top: 95,
+		right: 0,
+
+	},
 	modal: {
 		display: 'flex',
 		height: '30%',
@@ -58,6 +66,7 @@ const style = StyleSheet.create({
 		borderBottomColor: '#000',
 		borderBottomWidth: 10,
 		overflow: 'hidden',
+		zIndex: 1000,
 	},
 	modalTextContainer: {
 		top: 0,

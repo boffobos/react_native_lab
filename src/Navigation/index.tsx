@@ -23,9 +23,6 @@ const pageHeaderOptions = (title: string, subtitle: string): NativeStackNavigati
 		headerBackImageSource: require('../Assets/Images/back.png'),
 		headerTintColor: 'white',
 		headerBackTitle: '',
-
-	// headerStyle: {backgroundColor: PRIMARI_COLOR},
-	// headerTitleStyle: {color: 'red'}
 	});
 };
 
@@ -41,7 +38,7 @@ export const MyNavigation = () => {
 			<Stack.Screen name={BOTTOM_TABS.name} component={BottomTabs} options={{headerShown: false,}} />
 			<Stack.Screen name={SAVINGS.name} component={Savings} options={({route}) => pageHeaderOptions(SAVINGS.name, route.params.subtitle)} />
 			<Stack.Screen name={CHECKING.name} component={Checking} options={({route}) => pageHeaderOptions(CHECKING.name, route.params.subtitle)} />
-			<Stack.Screen name={SIGNIN.name} component={Signin} />
+			<Stack.Screen name={SIGNIN.name} component={Signin} options={() => ({headerShown: false})}/>
 		</Stack.Navigator>
 	)
 }

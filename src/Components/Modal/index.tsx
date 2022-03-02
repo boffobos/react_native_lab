@@ -8,7 +8,7 @@ import { Button } from "react-native-elements/dist/buttons/Button";
 interface ModalComponentProps {
 	isOpen: boolean,
 	close?: ()=>void,
-	children: JSX.Element[],
+	children: JSX.Element | JSX.Element[],
 	style?: StyleProp<ViewStyle>
 };
 
