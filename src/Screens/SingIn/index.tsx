@@ -41,11 +41,12 @@ export const Signin = () => {
 							<View style={style.formGroup}>
 								<Text style={style.formLabelText}>Email</Text>
 								<TextInput style={style.input} value={values.email} autoCapitalize='none' onChangeText={handleChange('email')} placeholder="Your email address" />
-								{touched.email && errors.email ? <Text style={style.formLabelText}>{errors.email}</Text> : null }
+								{touched.email && errors.email ? <Text style={style.formErrorLabel}>{errors.email}</Text> : null }
 							</View>
 							<View style={style.formGroup}>
 								<Text style={style.formLabelText}>Password</Text>
 								<TextInput style={style.input} value={values.password} autoCapitalize='none' secureTextEntry={true} onChangeText={handleChange('password')} placeholder="Password" />
+								{touched.password && errors.password ? <Text style={style.formErrorLabel}>{errors.password}</Text> : null }
 									<View style={style.fgPassword}>
 										<TouchableOpacity onPress={() => alert('hello!')}>
 											<Text style={style.fgPassText}>FORGOT PASSWORD</Text>
@@ -104,6 +105,9 @@ const style = StyleSheet.create({
 		fontFamily: FONT_REGULAR,
 		fontSize: 16,
 		color: '#71767c',
+	},
+	formErrorLabel: {
+		color: 'red',
 	},
 	fgPassword: {
 		padding: 10,
