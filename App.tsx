@@ -34,7 +34,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import { Provider } from 'react-redux';
-import { store } from './src/Redux/store';
+import { store, persistor } from './src/Redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import { generalTheme } from './src/Theme';
 import { BottomTabs } from './src/exports';
@@ -61,17 +62,19 @@ const theme = {
 
   return (
 		<Provider store={store}>
-			<NavigationContainer>
-				<SafeAreaProvider>
-					<ThemeProvider theme={generalTheme}>
-					{/* <GlobalTheme> */}
-						<StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-						<MyNavigation />
-					{/* </GlobalTheme> */}
-						{/* <BottomTabs /> */}
-					</ThemeProvider>
-				</SafeAreaProvider>
-			</NavigationContainer>
+			<PersistGate loading={null} persistor={persistor}>
+				<NavigationContainer>
+					<SafeAreaProvider>
+						<ThemeProvider theme={generalTheme}>
+						{/* <GlobalTheme> */}
+							<StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+							<MyNavigation />
+						{/* </GlobalTheme> */}
+							{/* <BottomTabs /> */}
+						</ThemeProvider>
+					</SafeAreaProvider>
+				</NavigationContainer>
+			</PersistGate>
 		</Provider>
   );
 };

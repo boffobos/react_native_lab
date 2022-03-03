@@ -7,9 +7,8 @@ import { userLogin } from '../../exports';
 import { Formik } from "formik";
 import  * as Yup from 'yup';
 import { useAppSelector, useAppDispatch } from "../../hooks";
-import { ButtonGroup } from "react-native-elements/dist/buttons/ButtonGroup";
 
-const auth = (data) => {
+const auth = (data = {email: '', password: ''}) => {
 	if(data.email.toLowerCase().includes('itechart-group.com') && data.password === 'Admin') return true;
 	return false
 }
@@ -19,8 +18,9 @@ export const Signin = () => {
 	const [email, setEmail] = React.useState('');
 	const [password, setPassword] = React.useState('');
 	const [isLoading, setIsLoading] = React.useState(false);
-	const [errors, setErrors] = React.useState('');
+	const [error, setError] = React.useState('');
 	const userName = useAppSelector(state => state.users.userName);
+	const jwt = useAppSelector(state => state.users.jwt);
 	const dispatch = useAppDispatch();
 	const initVal = {
 		email: '',
@@ -29,23 +29,30 @@ export const Signin = () => {
 	const submit = (data = initVal) => {
 		setEmail(data.email);
 		setPassword(data.password);
-		setIsLoading(true);
 	};
 	const validationScheme = Yup.object().shape({
 		email: Yup.string().required('Required!').email('Invalid email'),
 		password: Yup.string().required('Required!'),
 	})
 	React.useEffect(() => {
-		if(auth({email: email, password: password})){
-			setTimeout(() => {
-				dispatch(userLogin({userName: email, jwt: 'adfdff4fd5876aqdf45d8a6'}));
+		if (email && password) {
+			setIsLoading(true);
+			if(auth({email: email, password: password})){
+				setTimeout(() => {
+					dispatch(userLogin({userName: email, jwt: 'adfdff4fd5876aqdf45d8a6'}));
+					setIsLoading(false);
+					setError('');
+				}, 1000);
+			} else if (!auth({email: email, password: password})){
+				setError('Email or password is wrong!');
 				setIsLoading(false);
-				setErrors('');
-			}, 1000);
-		} else if (auth({email: email, password: password})){
-			setErrors('Email or password is wrong!')
+			}
 		}
-	}, [email, password])
+	}, [email, password]);
+
+	React.useEffect(() => {
+		console.log(jwt);
+	}, [])
 
 	return (
 		<SafeAreaView style={{flex: 1}}>
@@ -75,6 +82,7 @@ export const Signin = () => {
 													</TouchableOpacity>
 												</View>
 										</View>
+								{touched.email ? <Text style={style.errorMessage}>{error}</Text> : null}
 								</View>
 								<View style={style.loginContainer}>
 									<Button title='Login' loading={isLoading} buttonStyle={style.loginBtn} onPress={handleSubmit} />
@@ -82,7 +90,6 @@ export const Signin = () => {
 								</>
 							)}
 						</Formik>
-							{errors ? <View><Text>{errors}</Text></View> : null}
 					</View>
 				</KeyboardAvoidingView>
 				{/* Bottom part of the screen */}
@@ -136,6 +143,11 @@ const style = StyleSheet.create({
 	},
 	formErrorLabel: {
 		color: 'red',
+	},
+	errorMessage: {
+		color: 'red',
+		textAlign: 'center',
+		fontSize: 18,
 	},
 	fgPassword: {
 		padding: 10,
