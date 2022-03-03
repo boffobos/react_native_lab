@@ -1,5 +1,5 @@
 import React from "react";
-import { TextInput, TouchableOpacity, StyleSheet, View, Alert } from "react-native";
+import { TextInput, TouchableOpacity, StyleSheet, View, Alert, KeyboardAvoidingView, Platform } from "react-native";
 import { Text, Button } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { BORDER_COLOR, PRIMARI_COLOR, FONT_REGULAR } from "../../config";
@@ -7,12 +7,19 @@ import { userLogin } from '../../exports';
 import { Formik } from "formik";
 import  * as Yup from 'yup';
 import { useAppSelector, useAppDispatch } from "../../hooks";
+import { ButtonGroup } from "react-native-elements/dist/buttons/ButtonGroup";
 
+const auth = (data) => {
+	if(data.email.toLowerCase().includes('itechart-group.com') && data.password === 'Admin') return true;
+	return false
+}
 
 
 export const Signin = () => {
 	const [email, setEmail] = React.useState('');
 	const [password, setPassword] = React.useState('');
+	const [isLoading, setIsLoading] = React.useState(false);
+	const [errors, setErrors] = React.useState('');
 	const userName = useAppSelector(state => state.users.userName);
 	const dispatch = useAppDispatch();
 	const initVal = {
@@ -22,57 +29,69 @@ export const Signin = () => {
 	const submit = (data = initVal) => {
 		setEmail(data.email);
 		setPassword(data.password);
+		setIsLoading(true);
 	};
 	const validationScheme = Yup.object().shape({
 		email: Yup.string().required('Required!').email('Invalid email'),
 		password: Yup.string().required('Required!'),
 	})
 	React.useEffect(() => {
-		// if(email && password) setTimeout(() => Alert.alert('Done!'), 1000);
-		dispatch(userLogin({userName: email, jwt: 'adfdff4fd5876aqdf45d8a6'}));
-		setTimeout(() => console.log(userName), 500);
+		if(auth({email: email, password: password})){
+			setTimeout(() => {
+				dispatch(userLogin({userName: email, jwt: 'adfdff4fd5876aqdf45d8a6'}));
+				setIsLoading(false);
+				setErrors('');
+			}, 1000);
+		} else if (auth({email: email, password: password})){
+			setErrors('Email or password is wrong!')
+		}
 	}, [email, password])
 
 	return (
-		<SafeAreaView>
-			<View style={{height: '100%', display: 'flex', justifyContent: 'space-between'}}>
+		<SafeAreaView style={{flex: 1}}>
+			<View style={{flex: 1, display: 'flex', justifyContent: 'space-between'}}>
 				{/* top part of the screen */}
-				<Formik validationSchema={validationScheme} initialValues={initVal} onSubmit={submit}>
-					{({handleSubmit, values, handleChange, errors, touched}) => (
+				<KeyboardAvoidingView style={style.topContainer} behavior={Platform.OS === "ios" ? "padding" : "height"}>
 					<View style={style.topContainer}>
-						<View style={style.pageName}>
-							<Text style={style.headerText}>Login</Text>
-						</View>
-							<View style={style.formGroup}>
-								<Text style={style.formLabelText}>Email</Text>
-								<TextInput style={style.input} value={values.email} autoCapitalize='none' onChangeText={handleChange('email')} placeholder="Your email address" />
-								{touched.email && errors.email ? <Text style={style.formErrorLabel}>{errors.email}</Text> : null }
-							</View>
-							<View style={style.formGroup}>
-								<Text style={style.formLabelText}>Password</Text>
-								<TextInput style={style.input} value={values.password} autoCapitalize='none' secureTextEntry={true} onChangeText={handleChange('password')} placeholder="Password" />
-								{touched.password && errors.password ? <Text style={style.formErrorLabel}>{errors.password}</Text> : null }
-									<View style={style.fgPassword}>
-										<TouchableOpacity onPress={() => Alert.alert('hello!')}>
-											<Text style={style.fgPassText}>FORGOT PASSWORD</Text>
-										</TouchableOpacity>
-									</View>
-								<View style={style.loginContainer}>
-									<Button title='Login' buttonStyle={style.loginBtn} onPress={handleSubmit} />
+						<Formik validationSchema={validationScheme} initialValues={initVal} onSubmit={submit}>
+							{({handleSubmit, values, handleChange, errors, touched }) => (
+								<>
+								<View style={style.form}>
+										<View style={style.pageName}>
+											<Text style={style.headerText}>Login</Text>
+										</View>
+										<View style={style.formGroup}>
+											<Text style={style.formLabelText}>Email</Text>
+											<TextInput style={style.input} value={values.email} autoCapitalize='none' onChangeText={handleChange('email')} placeholder="Your email address" />
+											{touched.email && errors.email ? <Text style={style.formErrorLabel}>{errors.email}</Text> : null }
+										</View>
+										<View style={style.formGroup}>
+											<Text style={style.formLabelText}>Password</Text>
+											<TextInput style={style.input} value={values.password} autoCapitalize='none' secureTextEntry={true} onChangeText={handleChange('password')} placeholder="Password" />
+											{touched.password && errors.password ? <Text style={style.formErrorLabel}>{errors.password}</Text> : null }
+												<View style={style.fgPassword}>
+													<TouchableOpacity onPress={() => Alert.alert('hello!')}>
+														<Text style={style.fgPassText}>FORGOT PASSWORD</Text>
+													</TouchableOpacity>
+												</View>
+										</View>
 								</View>
-							</View>
+								<View style={style.loginContainer}>
+									<Button title='Login' loading={isLoading} buttonStyle={style.loginBtn} onPress={handleSubmit} />
+								</View>
+								</>
+							)}
+						</Formik>
+							{errors ? <View><Text>{errors}</Text></View> : null}
 					</View>
-					)}
-				</Formik>
+				</KeyboardAvoidingView>
 				{/* Bottom part of the screen */}
 				<View style={style.bottomContainer}>
-					<View style={style.otherAuthContainer}>
 						<Text style={[{textAlign: 'center'}, style.secondaryBtnText]}>Lets test 2 ways to log in</Text>
 						<View style={style.secondaryContainer}>
 							<Button icon={{ name: 'fingerprint', size: 18}} title='Touch ID' buttonStyle={style.secondaryBtnContainer} titleStyle={style.secondaryBtnText} />
 							<Button icon={{ name: 'face', size: 18}} title='Face ID' buttonStyle={style.secondaryBtnContainer} titleStyle={style.secondaryBtnText} />
 						</View>
-					</View>
 				</View>
 			</View>
 		</SafeAreaView>
@@ -81,7 +100,11 @@ export const Signin = () => {
 
 const style = StyleSheet.create({
 	topContainer: {
-		marginTop: 50
+		paddingVertical: 50,
+		flex: 1,
+	},
+	form: {
+		flex: 1,
 	},
 	input: {
 		paddingVertical: 5,
@@ -123,13 +146,14 @@ const style = StyleSheet.create({
 		color: PRIMARI_COLOR,
 	},
 	bottomContainer: {
-
+		// flex: 1,
+		paddingVertical: 10,
 	},
 	loginContainer: {
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'center',
-		marginTop: '35%',
+		// marginTop: '35%',
 	},
 	loginBtn: {
 		backgroundColor: PRIMARI_COLOR,
@@ -139,7 +163,7 @@ const style = StyleSheet.create({
 		// alignSelf: 'center',
 	},
 	otherAuthContainer: {
-		marginTop: 50,
+		// marginTop: 50,
 	},
 	secondaryContainer: {
 		display: 'flex',
@@ -154,7 +178,6 @@ const style = StyleSheet.create({
 		borderColor: '#71767c',
 		borderWidth: 1,
 		width: 170,
-
 	},
 	secondaryBtnText: {
 		color: '#71767c',
