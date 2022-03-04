@@ -13,7 +13,7 @@
     "target": "esnext",
     "noUnusedParameters": true,
     "paths": {
-      "@/*": ["src/*"],
+      // "@/*": ["src/*"],
     },
     "typeRoots": ["src/types"]
   },

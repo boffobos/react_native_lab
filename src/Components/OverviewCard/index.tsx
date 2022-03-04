@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Appearance } from 'react-native';
-import { BORDER_COLOR, CURRENCY, CURRENCY_FORMAT, GRAY_COLOR, PRIMARI_COLOR } from "../../config";
+import { BORDER_COLOR, CURRENCY, CURRENCY_FORMAT, GRAY_COLOR, LOCALE, PRIMARI_COLOR } from "../../config";
 import { Image, Text, ListItem } from 'react-native-elements';
 import { useNavigation } from "@react-navigation/native";
 
@@ -26,7 +26,7 @@ const Items = ({title, subtitle, amount, icon}: IOverviewListItem) => {
 	const navigation = useNavigation();
 	return (
 		<View>
-			<ListItem onPress={() => navigation.navigate(title, {subtitle: subtitle, amount: amount})}  bottomDivider>
+			<ListItem onPress={() => navigation.navigate(title as never, {subtitle: subtitle, amount: amount} as never)}  bottomDivider>
 				<ListItem.Content  style={styleItem.container}>
 					<View>
 						<View style={styleItem.titleContainer}>
@@ -35,7 +35,7 @@ const Items = ({title, subtitle, amount, icon}: IOverviewListItem) => {
 						</View>
 						<ListItem.Subtitle><Text style={styleItem.subtitle}>{subtitle}</Text></ListItem.Subtitle>
 					</View>
-					<ListItem.Subtitle style={styleItem.amount}>{amount.toLocaleString(undefined, CURRENCY_FORMAT)}</ListItem.Subtitle>
+					<ListItem.Subtitle style={styleItem.amount}>{amount.toLocaleString(LOCALE, CURRENCY_FORMAT)}</ListItem.Subtitle>
 				</ListItem.Content>
 				<ListItem.Chevron {...chevron}/>
 			</ListItem>
@@ -52,7 +52,7 @@ export const OverviewCard = ({title, subtitle, listItem}: IOverviewProps) => {
 		<View style={[style.cardContainer, {backgroundColor: CARD_BG_COLOR}]}>
 			<View style={style.headerContainer}>
 				<Text style={style.headTitle}>{title}</Text>
-				<Text style={style.headAmount}>{amount.toLocaleString(undefined, CURRENCY_FORMAT)}</Text>
+				<Text style={style.headAmount}>{amount.toLocaleString(LOCALE, CURRENCY_FORMAT)}</Text>
 				<Text style={style.headSubtitle}>{subtitle}</Text>
 			</View>
 			<View>
@@ -66,7 +66,6 @@ export const OverviewCard = ({title, subtitle, listItem}: IOverviewProps) => {
 
 const style = StyleSheet.create({
 	cardContainer: {
-		padding: 0,
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignContent: 'center',

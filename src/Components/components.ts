@@ -6,3 +6,4 @@ export * from './BackButton';
 export * from './Modal';
 export * from './OverviewCard';
 export * from './GoodnessCard';
+export * from './Greeting';

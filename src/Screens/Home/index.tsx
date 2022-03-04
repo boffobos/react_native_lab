@@ -1,15 +1,12 @@
 import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
-import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { Text } from 'react-native-elements';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { FONT_BOLD, PRIMARY_COLOR_LIGHT, SAVINGS, CHECKING } from '../../config/index';
-import { Button } from 'react-native-elements';
 import { ParamListBase } from '@react-navigation/native';
-import { OverviewCard } from '../../Components/components';
+import { OverviewCard, Greeting } from '../../Components/components';
 import heart from '../../Assets/Images/heart.png';
 
-const Stack = createNativeStackNavigator();
-
+//mock data for screen
 const overviewData = {
 	title: 'Accounts Overview',
 	subtitle: 'Total Available Cash',
@@ -33,14 +30,6 @@ const overviewData = {
 	],
 }
 
-const HomeScreen = () => {
-	return (
-		<View>
-			<Text style={styles.text}>Home</Text>
-		</View>
-	);
-}
-
 interface IHomeProps {
 	navigation: NativeStackNavigationProp<ParamListBase>;
 }
@@ -50,6 +39,7 @@ export const Home = ({navigation}: IHomeProps) => {
 	return (
 		<SafeAreaView style={styles.safe}>
 			<ScrollView style={{marginHorizontal: 10}}>
+				<Greeting />
 				<OverviewCard title={overviewData.title} subtitle={overviewData.subtitle} listItem={overviewData.listItem}/>
 
 
@@ -85,21 +75,3 @@ const styles = StyleSheet.create({
 
 	}
 });
-
-//Trash
-{/* <View >
-						<Button style={styles.btn} title={SAVINGS.name} onPress={() => navigation.navigate(SAVINGS.name, {subtitle: 'best test sub'})} />
-						<Button style={styles.btn} title={CHECKING.name} onPress={() => navigation.navigate(CHECKING.name, {subtitle: 'apart test sub'})} />
-					</View>
-					<View style={styles.container}>
-						<Text style={styles.text}>Home1</Text>
-					</View>
-					<View style={styles.container}>
-						<Text style={styles.text}>Home2</Text>
-					</View>
-					<View style={styles.container}>
-						<Text style={styles.text}>Home3</Text>
-					</View>
-					<View style={styles.container}>
-						<Text style={styles.text}>Home4</Text>
-					</View> */}
