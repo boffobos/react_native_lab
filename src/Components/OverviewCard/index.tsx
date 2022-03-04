@@ -28,7 +28,7 @@ const Items = ({title, subtitle, amount, icon}: IOverviewListItem) => {
 		<View>
 			<ListItem onPress={() => navigation.navigate(title as never, {subtitle: subtitle, amount: amount} as never)}  bottomDivider>
 				<ListItem.Content  style={styleItem.container}>
-					<View>
+					<View style={{flex:1, overflow: 'hidden', maxWidth: '60%', height: 50}}>
 						<View style={styleItem.titleContainer}>
 							<ListItem.Title style={styleItem.title}>{title}</ListItem.Title>
 							{icon ? <Image source={icon} containerStyle={styleItem.iconContainer} /> : null}
@@ -109,6 +109,7 @@ const styleItem = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'flex-start',
+		overflow: 'hidden',
 	},
 	title: {
 		fontSize: 20,
@@ -123,12 +124,15 @@ const styleItem = StyleSheet.create({
 	iconContainer: {
 		aspectRatio: 1,
 		width: 15,
-		marginLeft: 3.
+		marginLeft: 3,
 		// position: 'absolute',
 	},
 	amount: {
 		fontSize: 20,
-		textAlign: 'right'
+		textAlign: 'right',
+		flex: 2,
+		maxWidth: '50%',
+		overflow: 'hidden',
 	},
 	arrow: {
 		color: PRIMARI_COLOR,

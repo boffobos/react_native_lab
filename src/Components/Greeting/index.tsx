@@ -12,7 +12,7 @@ export const Greeting = () => {
 	const hours = date.getHours()
 	switch(true){
 		case hours < 5:{
-			greeting = 'Good night';
+			greeting = "Is't it a good night?";
 			break;
 		}
 		case hours < 12:{
@@ -28,7 +28,7 @@ export const Greeting = () => {
 			break;
 		}
 		case hours <= 23:{
-			greeting = 'Good night';
+			greeting = "Is't it a good night";
 			break;
 		}
 		default:

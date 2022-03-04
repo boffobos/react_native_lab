@@ -47,7 +47,7 @@ export const SECONDARY_COLOR = '#3d3238';
 export const BORDER_COLOR = '#dbdfe4';
 export const GRAY_COLOR = '#71767c';
 
-//Locale settings
+/* Locale settings */
 export const CURRENCY = 'USD';
 export const CURRENCY_FORMAT = {
 	style: 'currency',
@@ -57,7 +57,7 @@ export const CURRENCY_FORMAT = {
 };
 export const LOCALE = 'en-US';
 
-//Font settings
+/* Font settings */
 export const FONT_BOLD = 'SFRounded-Bold';
 export const FONT_REGULAR = 'SFRounded-regular';
 export const FONT_LIGHT = 'SFRounded-Light';
