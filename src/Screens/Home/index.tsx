@@ -3,8 +3,12 @@ import React from 'react';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { FONT_BOLD, PRIMARY_COLOR_LIGHT, SAVINGS, CHECKING } from '../../config/index';
 import { ParamListBase } from '@react-navigation/native';
-import { OverviewCard, Greeting } from '../../Components/components';
+import { OverviewCard, Greeting, GoodnessCard } from '../../Components/components';
 import heart from '../../Assets/Images/heart.png';
+import icon from '../../Assets/Images/avatar.png';
+import image1 from '../../Assets/Images/rectangle.png';
+import image2 from '../../Assets/Images/rectangle2.png';
+import image3 from '../../Assets/Images/XcWl13.gif';
 
 //mock data for screen
 const overviewData = {
@@ -28,7 +32,33 @@ const overviewData = {
 			amount: 100.45,
 		},
 	],
-}
+};
+const goodnessData = [
+	{
+		title: 'Your Giving Impact',
+		chName: 'St Jude',
+		time: '4 hrs ago',
+		icon: icon,
+		image: image2,
+		description: 'Your donation helped 5 amazing kids get much needed cancer surgery, thanks for being amazing!',
+	},
+	{
+		title: 'Your Giving Impact',
+		chName: 'St Jude',
+		time: '4 hrs ago',
+		icon: icon,
+		image: image1,
+		description: 'Your donation helped to consruct well to supply water whole vilage in Africa. Making love not war',
+	},
+	{
+		title: 'Your Giving Impact',
+		chName: 'St Jude',
+		time: '4 hrs ago',
+		icon: icon,
+		image: image3,
+		description: 'Your donation help to defeat some dictator in Africa',
+	},
+];
 
 interface IHomeProps {
 	navigation: NativeStackNavigationProp<ParamListBase>;
@@ -41,7 +71,9 @@ export const Home = ({navigation}: IHomeProps) => {
 			<ScrollView style={{marginHorizontal: 10}}>
 				<Greeting />
 				<OverviewCard title={overviewData.title} subtitle={overviewData.subtitle} listItem={overviewData.listItem}/>
-
+				{goodnessData.map(item => {
+					return <GoodnessCard {...item} />
+				})}
 
 			</ScrollView>
 		</SafeAreaView>

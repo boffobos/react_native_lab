@@ -72,7 +72,7 @@ const style = StyleSheet.create({
 		borderColor: BORDER_COLOR,
 		borderWidth: 1,
 		borderRadius: 5,
-
+		marginBottom: 10,
 	},
 	headerContainer: {
 		display: 'flex',
