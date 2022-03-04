@@ -17,8 +17,6 @@ const iconsForTabBar = (route: RouteProp<ParamListBase, string>, focused: boolea
 		case HOME.name:
 			icon = !focused ? <Image source={require('../../Assets/Images/home.png')} containerStyle={styles.tabIconContainer} style={styles.icon} />
 			: <Image source={require('../../Assets/Images/home-solid.png')} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
-			// icon = !focused ? <Image source={HOME_LOGO_REGULAR} containerStyle={styles.tabIconContainer} style={styles.icon} />
-			// : <Image source={HOME_LOGO_SOLID} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
 			break;
 		case ACCOUNTS.name:
 			icon = !focused ? <Image source={require('../../Assets/Images/accounts.png')} containerStyle={styles.tabIconContainer} style={styles.icon} />

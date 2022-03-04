@@ -1,6 +1,6 @@
 import React from "react";
-import { ImageSourcePropType } from "react-native";
-import { Image, Button,  } from 'react-native-elements';
+import { ImageSourcePropType, View } from "react-native";
+import { Image, Button, Text } from 'react-native-elements';
 
 interface ICardProps {
 	title: string;
@@ -11,12 +11,16 @@ interface ICardProps {
 
 const CardHeader = ({}: ICardProps) => {
 	return (
+		<View>
 
+		</View>
 	);
 }
 
-export const Goodness = ({}: ICardProps) => {
+export const GoodnessCard = ({}: ICardProps) => {
 	return (
+		<View>
 
+		</View>
 	);
 }

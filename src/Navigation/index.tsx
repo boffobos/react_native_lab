@@ -22,7 +22,7 @@ const pageHeaderOptions = (title: string, subtitle: string): NativeStackNavigati
 	return ({
 		headerTitle: () => <HeaderTitle title={title} subtitle={subtitle} />,
 		headerRight: () => <HeaderAvatar />,
-		headerBackImageSource: require('../Assets/Images/back.png'),
+		// headerBackImageSource: require('../Assets/Images/back.png'),
 		headerTintColor: 'white',
 		headerBackTitle: '',
 	});
@@ -36,7 +36,6 @@ const headerLeftButton = (func: any) => {
 
 export const MyNavigation = () => {
 	const user = useAppSelector(state => state.users.userName);
-	console.log(user);
 	return (
 		<Stack.Navigator screenOptions={{headerStyle: {backgroundColor: PRIMARI_COLOR, }, }} >
 		{ user ? <>

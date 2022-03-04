@@ -44,7 +44,15 @@ export const SIGNIN = {
 export const PRIMARI_COLOR = '#d4368f';
 export const PRIMARY_COLOR_LIGHT = '#e381c3';
 export const SECONDARY_COLOR = '#3d3238';
-export const BORDER_COLOR = '#dbdfe4'
+export const BORDER_COLOR = '#dbdfe4';
+export const GRAY_COLOR = '#71767c';
+export const CURRENCY = 'USD';
+export const CURRENCY_FORMAT = {
+	style: 'currency',
+	currency: CURRENCY,
+	currencySign: 'standard',
+	currencyDisplay: 'narrowSymbol',
+}
 
 export const FONT_BOLD = 'SFRounded-Bold';
 export const FONT_REGULAR = 'SFRounded-regular';

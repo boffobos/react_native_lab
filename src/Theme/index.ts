@@ -1,14 +1,14 @@
 import React from 'react';
 import { ThemeProvider } from 'react-native-elements';
 import { useColorScheme } from 'react-native-appearance';
-import { PRIMARY_COLOR_LIGHT } from '../config';
+import { FONT_REGULAR, PRIMARY_COLOR_LIGHT } from '../config';
 import { StyleProp } from 'react-native';
 
 interface Props {
 	children: JSX.Element | JSX.Element[];
 }
 
-let colorScheme = useColorScheme();
+// let colorScheme = useColorScheme();
 
 export const generalTheme = {
 	Button: {
@@ -21,6 +21,9 @@ export const generalTheme = {
 			marginVertical: 10,
 		}
 	},
+	Text: {
+		fontFamily: FONT_REGULAR,
+	}
 };
 
 // const GlobalTheme = ( { children }: Props ) => {

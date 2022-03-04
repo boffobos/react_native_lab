@@ -1,15 +1,16 @@
-import { FONT_BOLD } from "../../config";
+import { CURRENCY_FORMAT, FONT_BOLD } from "../../config";
 import React from "react"
 import { Text, View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 
 export const Savings = ({route}) => {
-	const {subtitle} = route.params;
+	const {subtitle, amount} = route.params;
+
 	return (
 		<SafeAreaView style={styles.safe}>
 			<View style={styles.container}>
-				<Text style={styles.text}>Saving</Text>
+				<Text style={styles.text}>Saving {amount ? amount.toLocaleString(undefined, CURRENCY_FORMAT) : null}</Text>
 			</View>
 		</SafeAreaView>
 	);
