@@ -1,7 +1,7 @@
 import { StyleSheet, View, SafeAreaView } from 'react-native';
 import React from 'react';
 import { Text } from 'react-native-elements';
-import { Button } from 'react-native-elements/dist/buttons/Button';
+import { Button } from 'react-native-elements';
 import { FONT_BOLD, SAVINGS, CHECKING } from '../../config';
 
 export const Accounts = ({navigation}) => {

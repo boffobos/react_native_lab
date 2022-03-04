@@ -1,7 +1,7 @@
 import { HOME } from "../../config";
 import React from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { Image } from "react-native-elements/dist/image/Image";
+import { Image } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 
 

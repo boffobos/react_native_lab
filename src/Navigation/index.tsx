@@ -4,7 +4,7 @@ import React from 'react';
 import { BottomTabs } from '../Navigation/BottomTabs';
 import { Savings, Checking, HeaderAvatar, BackButton, Signin } from '../exports';
 import { HeaderTitle } from '../Components/HeaderTitle';
-import { Button } from 'react-native-elements/dist/buttons/Button';
+import { Button } from 'react-native-elements';
 import { useSelector } from 'react-redux';
 import { useAppSelector } from '../hooks';
 

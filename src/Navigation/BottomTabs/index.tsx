@@ -4,7 +4,7 @@ import { ACCOUNTS, APP, CARDS, GIVING, HOME, PAYMENTS, PRIMARI_COLOR, SECONDARY_
 import {Accounts, Cards, Giving, Home, Payments, HeaderTitle, HeaderAvatar, HabmburgerButton, BackButton } from '../../exports'
 import React from 'react';
 import { Image, Text } from 'react-native-elements';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import { ParamListBase, RouteProp } from '@react-navigation/native';
 // import {ACCOUNTS_LOGO_SOLID, HOME_LOGO_REGULAR, HOME_LOGO_SOLID} from '../../Assets/index';
 
@@ -16,13 +16,13 @@ const iconsForTabBar = (route: RouteProp<ParamListBase, string>, focused: boolea
 	switch(route.name) {
 		case HOME.name:
 			icon = !focused ? <Image source={require('../../Assets/Images/home.png')} containerStyle={styles.tabIconContainer} style={styles.icon} />
-			: <Image source={require('../../Assets/Images/home@3x-solid.png')} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
+			: <Image source={require('../../Assets/Images/home-solid.png')} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
 			// icon = !focused ? <Image source={HOME_LOGO_REGULAR} containerStyle={styles.tabIconContainer} style={styles.icon} />
 			// : <Image source={HOME_LOGO_SOLID} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
 			break;
 		case ACCOUNTS.name:
 			icon = !focused ? <Image source={require('../../Assets/Images/accounts.png')} containerStyle={styles.tabIconContainer} style={styles.icon} />
-			: <Image source={require('../../Assets/Images/accounts@3x-solid.png')} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
+			: <Image source={require('../../Assets/Images/accounts-solid.png')} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
 			break;
 		case GIVING.name:
 			icon = !focused ? <Image source={require('../../Assets/Images/giving.png')} containerStyle={styles.tabIconContainer} style={styles.icon} />
@@ -30,11 +30,11 @@ const iconsForTabBar = (route: RouteProp<ParamListBase, string>, focused: boolea
 			break;
 		case PAYMENTS.name:
 			icon = !focused ? <Image source={require('../../Assets/Images/payment.png')} containerStyle={styles.tabIconContainer} style={styles.icon} />
-			: <Image source={require('../../Assets/Images/payment@3x-solid.png')} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
+			: <Image source={require('../../Assets/Images/payment-solid.png')} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
 			break;
 		case CARDS.name:
 			icon = !focused ? <Image source={require('../../Assets/Images/cards.png')} containerStyle={styles.tabIconContainer} style={styles.icon} />
-			: <Image source={require('../../Assets/Images/cards@3x-solid.png')} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
+			: <Image source={require('../../Assets/Images/cards-solid.png')} containerStyle={styles.tabIconContainer} style={styles.activeIcon} />
 			break;
 		default:
 			icon = 'warning';
@@ -53,7 +53,7 @@ const iconsForTabBar = (route: RouteProp<ParamListBase, string>, focused: boolea
 const logo = require('../../Assets/Images/heart.png');
 const HeaderButton = () => {
 	return (
-		<TouchableOpacity onPress={() => alert('Hello!')} style={{height: '100%',}}>
+		<TouchableOpacity onPress={() => Alert.alert('Hello!')} style={{height: '100%',}}>
 			<Image source={require('../../Assets/Images/burgerMenuIcon.png')} style={{ width: 20, height: 20, marginLeft: 15}}/>
 		</TouchableOpacity>
 	);

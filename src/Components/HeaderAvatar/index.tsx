@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
-import { Image } from "react-native-elements/dist/image/Image";
+import { Image } from "react-native-elements";
 import { ListItem, Text } from "react-native-elements";
-import { Button } from "react-native-elements/dist/buttons/Button";
+import { Button } from "react-native-elements";
 import { Modal } from '../components';
 import { FONT_REGULAR, PRIMARY_COLOR_LIGHT, SIGNIN } from "../../config";
 import { useAppDispatch } from "../../hooks";

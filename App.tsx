@@ -48,18 +48,6 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-const theme = {
-	// // Button: {
-	// // 	raised: true,
-	// // 	style: {
-	// // 	width: "33%",
-  // //   alignSelf: 'center',
-  // //   marginTop: 24,
-	// // 	marginBottom: 24,
-	// // 	}
-	// },
-}
-
   return (
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
@@ -70,7 +58,6 @@ const theme = {
 							<StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
 							<MyNavigation />
 						{/* </GlobalTheme> */}
-							{/* <BottomTabs /> */}
 						</ThemeProvider>
 					</SafeAreaProvider>
 				</NavigationContainer>
