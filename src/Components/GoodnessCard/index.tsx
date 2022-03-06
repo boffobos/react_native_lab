@@ -10,7 +10,6 @@ import {
 import { Image, Button, Text } from 'react-native-elements';
 import { useAppSelector } from '../../hooks';
 import Video from 'react-native-video';
-import VideoPlayer from 'react-native-video-controls';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
 interface ICardProps {
@@ -39,16 +38,17 @@ const screenCenter = Math.floor(Dimensions.get('screen').height / 2);
 
 const VideoPlay = ({video, scroll}: any) => {
 	const videoRef = React.useRef(null);
+	const videoPlayer = React.useRef(null);
 	const [paused, setPaused] = React.useState(true);
 	const [loud, setLoud] = React.useState(false);
-
+	const [isFullScreen, setIsFullScreen] = React.useState(false);
 
 	React.useEffect(() => {
 		getCoords();
 	}, [scroll])
 
-	const playVideo = () => {
-		setPaused(!paused);
+	const fullScreen = () => {
+		videoPlayer.current.presentFullscreenPlayer();
 	}
 	const muted = () => {
 		setLoud(!loud);
@@ -72,12 +72,14 @@ const VideoPlay = ({video, scroll}: any) => {
 
 	return (
 		<>
-			<TouchableWithoutFeedback style={{flex: 1}} onPress={playVideo}>
+			<TouchableWithoutFeedback style={{flex: 1}} onPress={fullScreen}>
 				<View ref={videoRef} onLayout={getCoords} >
-					<Video  source={video} paused={paused} style={bodyStyle.video} repeat={true} volume={volume()} />
+					<Video ref={videoPlayer} source={video} paused={paused} style={bodyStyle.video} repeat={true} volume={volume()} />
+					{!paused ?
 					<TouchableWithoutFeedback onPress={muted}>
 						<Icon size={30} name={loud? "volume-up" : "volume-off"} style={bodyStyle.volIcon} />
-					</TouchableWithoutFeedback>
+					</TouchableWithoutFeedback> :
+					null}
 				</View>
 			</TouchableWithoutFeedback>
 		</>
