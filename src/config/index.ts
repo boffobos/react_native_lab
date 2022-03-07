@@ -39,6 +39,10 @@ export const SIGNIN = {
 	name: 'Signin',
 	tabIcon: 'none',
 }
+export const PROFILE = {
+	name: 'Profile',
+	tabIcon: 'none',
+}
 
 /* Style constants */
 export const PRIMARI_COLOR = '#d4368f';

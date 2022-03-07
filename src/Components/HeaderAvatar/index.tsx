@@ -13,7 +13,7 @@ const img = require('../../Assets/Images/oval.png');
 
 export const HeaderAvatar = () => {
 	const [isOpen, setIsOpen] = React.useState(false);
-	// const [isOpenDropdown, setIsOpenDropdown] = React.useState(false);
+	const [isOpenDropdown, setIsOpenDropdown] = React.useState(false);
 	const navgator = useNavigation();
 	const dispatch = useAppDispatch();
 	const toggle = (): void => {
@@ -24,29 +24,29 @@ export const HeaderAvatar = () => {
 		setIsOpen(!isOpen);
 		// navgator.navigate({name: SIGNIN.name});
 	}
-	// const toggleDropdown = (): void => {
-	// 	setIsOpenDropdown(!isOpenDropdown);
-	// };
+	const toggleDropdown = (): void => {
+		setIsOpenDropdown(!isOpenDropdown);
+	};
 	return (
 		<View style={style.container}>
 			<TouchableOpacity onPress={toggle}>
 				<Image source={img} style={style.image}/>
 			</TouchableOpacity>
-			{/* <Modal style={style.dropdown} isOpen={isOpenDropdown} close={toggleDropdown}>
+			<Modal style={style.dropdown} isOpen={isOpenDropdown} close={toggleDropdown}>
 				<ListItem>
 					<ListItem.Content>
 						<ListItem.Title onPress={toggleDropdown}>Logout</ListItem.Title>
 						<ListItem.Title onPress={toggle}>Open modal</ListItem.Title>
 					</ListItem.Content>
 				</ListItem>
-			</Modal> */}
-			<Modal isOpen={isOpen} close={toggle} style={style.modal}>
+			</Modal>
+			{/* <Modal isOpen={isOpen} close={toggle} style={style.modal}>
 					<View style={style.modalTextContainer}>
 						<Text style={style.textHead}>Log out</Text>
 						<Text style={style.textAsk}>Are you sure?</Text>
 					</View>
 					<Button title={'Yes'} style={style.btn} onPress={logout}/>
-			</Modal>
+			</Modal> */}
 		</View>
 	)
 }
