@@ -40,8 +40,8 @@ export const HeaderTitle = ({ img, title = APP.name, subtitle }:Props) => {
 	headerIcon: {
 		tintColor: 'white',
 		width: 20,
-		height: 20,
 		marginRight: 5,
+		aspectRatio: 1.2,
 	},
  	title: {
  		color: 'white',
@@ -51,6 +51,8 @@ export const HeaderTitle = ({ img, title = APP.name, subtitle }:Props) => {
 	subtitle: {
 	 color: 'white',
 	 fontSize: 12,
+	 height: 14,
+	 overflow: 'hidden',
 	}
  })
 

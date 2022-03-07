@@ -2,7 +2,7 @@ import { FONT_REGULAR, PRIMARI_COLOR } from "../../config";
 import React from "react";
 import { StyleProp, StyleSheet, ViewStyle } from "react-native";
 import { Overlay, Text } from "react-native-elements";
-import { Button } from "react-native-elements/dist/buttons/Button";
+import { Button } from "react-native-elements";
 
 
 interface ModalComponentProps {
