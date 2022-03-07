@@ -1,9 +1,8 @@
 import { StyleSheet, View, SafeAreaView } from 'react-native';
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Text } from 'react-native-elements';
 import { Button } from 'react-native-elements/dist/buttons/Button';
-import { ACCOUNTS, FONT_BOLD, SAVINGS, CHECKING } from '../../config';
+import { FONT_BOLD, SAVINGS, CHECKING } from '../../config';
 
 export const Accounts = ({navigation}) => {
 	return (

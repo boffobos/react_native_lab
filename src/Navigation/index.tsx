@@ -1,12 +1,12 @@
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
-import { HOME, ACCOUNTS, GIVING, PAYMENTS, CARDS, SAVINGS, BOTTOM_TABS, PRIMARI_COLOR, CHECKING } from '../config';
+import { HOME, SAVINGS, BOTTOM_TABS, PRIMARI_COLOR, CHECKING, SIGNIN } from '../config';
 import React from 'react';
-// import { Savings, BottomTabs, HeaderTitle } from '../exports';
 import { BottomTabs } from '../Navigation/BottomTabs';
-import { Savings, Checking, HeaderAvatar, BackButton } from '../exports';
+import { Savings, Checking, HeaderAvatar, BackButton, Signin } from '../exports';
 import { HeaderTitle } from '../Components/HeaderTitle';
 import { Button } from 'react-native-elements/dist/buttons/Button';
-import { Image } from 'react-native';
+import { useSelector } from 'react-redux';
+import { useAppSelector } from '../hooks';
 
 
 const Stack = createNativeStackNavigator();
@@ -20,14 +20,11 @@ const subtitle = 'rest test subs';
 
 const pageHeaderOptions = (title: string, subtitle: string): NativeStackNavigationOptions => {
 	return ({
-		// headerTitle: () => <HeaderTitle title={title} subtitle={subtitle} />,
+		headerTitle: () => <HeaderTitle title={title} subtitle={subtitle} />,
 		headerRight: () => <HeaderAvatar />,
 		headerBackImageSource: require('../Assets/Images/back.png'),
 		headerTintColor: 'white',
 		headerBackTitle: '',
-
-	// headerStyle: {backgroundColor: PRIMARI_COLOR},
-	// headerTitleStyle: {color: 'red'}
 	});
 };
 
@@ -38,11 +35,17 @@ const headerLeftButton = (func: any) => {
 }
 
 export const MyNavigation = () => {
+	const user = useAppSelector(state => state.users.userName);
+	console.log(user);
 	return (
 		<Stack.Navigator screenOptions={{headerStyle: {backgroundColor: PRIMARI_COLOR, }, }} >
+		{ user ? <>
 			<Stack.Screen name={BOTTOM_TABS.name} component={BottomTabs} options={{headerShown: false,}} />
 			<Stack.Screen name={SAVINGS.name} component={Savings} options={({route}) => pageHeaderOptions(SAVINGS.name, route.params.subtitle)} />
 			<Stack.Screen name={CHECKING.name} component={Checking} options={({route}) => pageHeaderOptions(CHECKING.name, route.params.subtitle)} />
+		</> : <>
+		<Stack.Screen name={SIGNIN.name} component={Signin} options={() => ({headerShown: false})}/>
+		</> }
 		</Stack.Navigator>
 	)
 }
