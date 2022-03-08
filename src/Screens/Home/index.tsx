@@ -83,7 +83,7 @@ interface IHomeProps {
 	navigation: NativeStackNavigationProp<ParamListBase>;
 }
 
-export const Home = ({navigation}: IHomeProps) => {
+export const Home = ({}: IHomeProps) => {
 	const height = useBottomTabBarHeight();
 	const [scroll, setScroll] = React.useState(0);
 	const handleScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {

@@ -39,7 +39,7 @@ export const Signin = () => {
 			setIsLoading(true);
 			if(auth({email: email, password: password})){
 				setTimeout(() => {
-					dispatch(userLogin({email: email, jwt: 'adfdff4fd5876aqdf45d8a6', userName: email.split('@')[0], dob: 'April 01, 1994', avatar: 'avatar_1.png'})); //update later for right data
+					dispatch(userLogin({email: email, jwt: 'adfdff4fd5876aqdf45d8a6', userName: email.split('@')[0], dob: 'April 01, 1994', avatar: ''})); //update later for right data
 					setIsLoading(false);
 					setError('');
 				}, 1000);

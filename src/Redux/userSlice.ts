@@ -17,6 +17,12 @@ interface IUserAction {
 	avatar: string;
 };
 
+interface IUserUpdate {
+	userName?: string | null;
+	dob?: string | null;
+	avatar?: string | null;
+}
+
 const initialState:IUserState = {
 	email: null,
 	loggedInTime: null,
@@ -45,10 +51,16 @@ const userSlice = createSlice({
 					state.jwt = null;
 					state.userName = null;
 					state.dob = null;
+				},
+
+				'userUpdate': (state: IUserState, action: PayloadAction<IUserUpdate>) => {
+					if (action.payload.userName) state.userName = action.payload.userName;
+					if (action.payload.dob) state.dob = action.payload.dob;
+					if (action.payload.avatar) state.avatar = action.payload.avatar;
 				}
 	}
 });
 
-export const { userLogin, userLogout } = userSlice.actions;
+export const { userLogin, userLogout, userUpdate } = userSlice.actions;
 export default userSlice.reducer;
 

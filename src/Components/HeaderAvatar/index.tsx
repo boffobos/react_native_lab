@@ -4,19 +4,18 @@ import { Image } from "react-native-elements";
 import { ListItem, Text } from "react-native-elements";
 import { Modal } from '../components';
 import { BORDER_COLOR, FONT_REGULAR, PRIMARY_COLOR_LIGHT, SIGNIN } from "../../config";
-import { useAppDispatch } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { userLogout } from "../../exports";
 import { useNavigation } from "@react-navigation/native";
-import img from '../../Assets/Images/oval.png'
+import img from '../../Assets/Images/avatar_1.png'
 
 export const HeaderAvatar = () => {
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [isOpenDropdown, setIsOpenDropdown] = React.useState(false);
 	const navgator = useNavigation();
 	const dispatch = useAppDispatch();
-	const toggle = (): void => {
-		setIsOpen(!isOpen);
-	};
+	const avatarUri = {uri: useAppSelector(state => state.users.avatar) || ''};
+
 	const logout = (): void => {
 		setTimeout(() => dispatch(userLogout()), 500);
 		setIsOpenDropdown(!isOpenDropdown);
@@ -31,7 +30,7 @@ export const HeaderAvatar = () => {
 	return (
 		<View style={style.container}>
 			<TouchableOpacity onPress={toggleDropdown}>
-				<Image source={img} style={style.image}/>
+				<Image source={avatarUri.uri? avatarUri : img} style={style.image}/>
 			</TouchableOpacity>
 			<Modal style={style.dropdown} isOpen={isOpenDropdown} close={toggleDropdown} backdropStyle={style.backdrop} >
 				<ListItem onPress={() => navigate('Profile' as never)} bottomDivider>
