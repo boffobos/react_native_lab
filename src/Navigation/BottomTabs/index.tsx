@@ -1,6 +1,6 @@
 import { BottomTabNavigationOptions, createBottomTabNavigator, useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { BlurView } from '@react-native-community/blur';
-import { ACCOUNTS, APP, CARDS, GIVING, HOME, PAYMENTS, PRIMARI_COLOR, SECONDARY_COLOR } from '../../config';
+import { ACCOUNTS, APP, CARDS, GIVING, HOME, PAYMENTS, PRIMARY_COLOR, SECONDARY_COLOR } from '../../config';
 import {Accounts, Cards, Giving, Home, Payments, HeaderTitle, HeaderAvatar, HabmburgerButton, BackButton } from '../../exports'
 import React from 'react';
 import { Image, Text } from 'react-native-elements';
@@ -61,7 +61,7 @@ const homePageHeaderOptions: BottomTabNavigationOptions = {
 	headerLeft: () => <HabmburgerButton />,
 	headerTitle: () => <HeaderTitle img={logo} title={APP.name}/>,
 	headerRight: () => <HeaderAvatar />,
-	// headerStyle: {backgroundColor: PRIMARI_COLOR},
+	// headerStyle: {backgroundColor: PRIMARY_COLOR},
 }
 
 const accountsPageHeaderOptions: BottomTabNavigationOptions = {
@@ -81,14 +81,14 @@ export const BottomTabs = () => {
 			}}
 			screenOptions={({route}) => ({
 				tabBarIcon: ({focused}) => iconsForTabBar(route, focused),
-				tabBarActiveTintColor: PRIMARI_COLOR,
+				tabBarActiveTintColor: PRIMARY_COLOR,
 				tabBarInactiveTintColor: SECONDARY_COLOR,
 				tabBarBackground: () => <BlurView blurType='light' blurAmount={15}	style={styles.blurView} />,
 				tabBarStyle: styles.tabBarStyle,
 				tabBarItemStyle: {
 					backgroundColor: 'rgba(255, 0, 0, 0)',
 				},
-				headerStyle: {backgroundColor: PRIMARI_COLOR},
+				headerStyle: {backgroundColor: PRIMARY_COLOR},
 				headerTitleStyle: {color: 'white'},
 				headerBackImage: require('../../Assets/Images/back.png'),
 				headerLeft: () => <BackButton />,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
 	},
 	activeIcon: {
 		opacity: 1,
-		tintColor: PRIMARI_COLOR,
+		tintColor: PRIMARY_COLOR,
 	},
 	tabBarStyle: {
 		opacity: 1,

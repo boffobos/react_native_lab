@@ -2,7 +2,7 @@ import React from "react";
 import { TextInput, TouchableOpacity, StyleSheet, View, Alert, KeyboardAvoidingView, Platform } from "react-native";
 import { Text, Button } from "react-native-elements";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { BORDER_COLOR, PRIMARI_COLOR, FONT_REGULAR } from "../../config";
+import { BORDER_COLOR, PRIMARY_COLOR, FONT_REGULAR } from "../../config";
 import { userLogin } from '../../exports';
 import { Formik } from "formik";
 import  * as Yup from 'yup';
@@ -39,7 +39,7 @@ export const Signin = () => {
 			setIsLoading(true);
 			if(auth({email: email, password: password})){
 				setTimeout(() => {
-					dispatch(userLogin({userName: email, jwt: 'adfdff4fd5876aqdf45d8a6'}));
+					dispatch(userLogin({email: email, jwt: 'adfdff4fd5876aqdf45d8a6', userName: email.split('@')[0], dob: 'April 01, 1994', avatar: 'avatar_1.png'})); //update later for right data
 					setIsLoading(false);
 					setError('');
 				}, 1000);
@@ -130,7 +130,7 @@ const style = StyleSheet.create({
 	},
 	pageName: {
 		alignSelf: 'flex-start',
-		borderBottomColor: PRIMARI_COLOR,
+		borderBottomColor: PRIMARY_COLOR,
 		borderBottomWidth: 2,
 		marginLeft: 20,
 		marginBottom: 20,
@@ -155,7 +155,7 @@ const style = StyleSheet.create({
 		alignSelf: 'flex-end',
 	},
 	fgPassText: {
-		color: PRIMARI_COLOR,
+		color: PRIMARY_COLOR,
 	},
 	bottomContainer: {
 		// flex: 1,
@@ -168,7 +168,7 @@ const style = StyleSheet.create({
 		// marginTop: '35%',
 	},
 	loginBtn: {
-		backgroundColor: PRIMARI_COLOR,
+		backgroundColor: PRIMARY_COLOR,
 		borderRadius: 50,
 		height: 50,
 		width: 300,

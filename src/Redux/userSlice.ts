@@ -1,20 +1,29 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IUserState {
-	userName: string | null;
+	email: string | null;
 	loggedInTime: number | null;
 	jwt: string | null;
+	userName: string | null;
+	dob: string | null;
+	avatar: string;
 }
 
 interface IUserAction {
-	userName: string,
-	jwt: string
+	email: string;
+	jwt: string;
+	userName: string;
+	dob: string;
+	avatar: string;
 };
 
 const initialState:IUserState = {
-	userName: null,
+	email: null,
 	loggedInTime: null,
-	jwt: null
+	jwt: null,
+	userName: null,
+	dob: null,
+	avatar: '',
 }
 
 const userSlice = createSlice({
@@ -22,15 +31,20 @@ const userSlice = createSlice({
 	initialState,
 	reducers: {
 			'userLogin': (state: IUserState, action: PayloadAction<IUserAction>) => {
-					state.userName = action.payload.userName;
-					state.loggedInTime = Date.now();
-					state.jwt = action.payload.jwt;
+				state.email = action.payload.email
+				state.loggedInTime = Date.now();
+				state.jwt = action.payload.jwt;
+				state.userName = action.payload.userName;
+				state.dob = action.payload.dob;
+				state.avatar= action.payload.avatar;
 				},
 
 			 'userLogout': (state: IUserState) => {
-					state.userName = null;
+					state.email = null;
 					state.loggedInTime = null;
 					state.jwt = null;
+					state.userName = null;
+					state.dob = null;
 				}
 	}
 });

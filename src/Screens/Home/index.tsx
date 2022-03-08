@@ -11,6 +11,7 @@ import image1 from '../../Assets/Images/rectangle.png';
 import image2 from '../../Assets/Images/rectangle2.png';
 import image3 from '../../Assets/Images/XcWl13.gif';
 import video from '../../Assets/Images/video.mp4'
+import video2 from '../../Assets/Images/video2.mp4'
 
 //mock data for screen
 const overviewData = {
@@ -68,6 +69,14 @@ const goodnessData = [
 		image: image3,
 		description: 'Your donation help to defeat some dictator in Africa',
 	},
+	{
+		title: 'Your Giving Impact',
+		chName: 'St Jude',
+		time: '8 hrs ago',
+		icon: icon,
+		video: video2,
+		description: 'Bunny fill happy',
+	},
 ];
 
 interface IHomeProps {
@@ -82,11 +91,6 @@ export const Home = ({navigation}: IHomeProps) => {
 			setScroll(e.timeStamp);
 		}
 	}
-	// useEffect(() => {
-	// 	if(video){
-	// 	video.current.measure((x, y) => console.log(x, y))
-	// 	}
-	// },[scroll])
 
 	return (
 		<SafeAreaView style={styles.safe}>
