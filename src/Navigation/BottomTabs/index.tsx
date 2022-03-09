@@ -61,15 +61,11 @@ const homePageHeaderOptions: BottomTabNavigationOptions = {
 	headerLeft: () => <HabmburgerButton />,
 	headerTitle: () => <HeaderTitle img={logo} title={APP.name}/>,
 	headerRight: () => <HeaderAvatar />,
-	// headerStyle: {backgroundColor: PRIMARY_COLOR},
 }
 
 const accountsPageHeaderOptions: BottomTabNavigationOptions = {
 	headerTitle: () => <HeaderTitle title={ACCOUNTS.name} />,
 	headerRight: () => <HeaderAvatar />,
-	// headerLeft: () => <BackButton />,
-
-
 }
 
 export const BottomTabs = () => {
@@ -79,7 +75,7 @@ export const BottomTabs = () => {
 			sceneContainerStyle={{
 				backgroundColor: 'transparent'
 			}}
-			screenOptions={({route}) => ({
+			screenOptions={({route, navigation}) => ({
 				tabBarIcon: ({focused}) => iconsForTabBar(route, focused),
 				tabBarActiveTintColor: PRIMARY_COLOR,
 				tabBarInactiveTintColor: SECONDARY_COLOR,
@@ -91,7 +87,7 @@ export const BottomTabs = () => {
 				headerStyle: {backgroundColor: PRIMARY_COLOR},
 				headerTitleStyle: {color: 'white'},
 				headerBackImage: require('../../Assets/Images/back.png'),
-				headerLeft: () => <BackButton />,
+				headerLeft: () => <BackButton onPress={navigation.goBack}/>,
 
 		})}>
 			<Tabs.Screen name={HOME.name} component={Home} options={homePageHeaderOptions}/>
@@ -109,10 +105,11 @@ const styles = StyleSheet.create({
 		width: '100%',
 		flex: 1,
 		aspectRatio: 1,
+		alignItems: 'flex-start'
 	},
 	icon: {
 		tintColor: SECONDARY_COLOR,
-		backgroundColor: 'transparent'
+		backgroundColor: 'transparent',
 	},
 	activeIcon: {
 		opacity: 1,

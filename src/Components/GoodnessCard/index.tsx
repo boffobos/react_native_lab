@@ -41,14 +41,15 @@ const VideoPlay = ({video, scroll}: any) => {
 	const videoPlayer = React.useRef(null);
 	const [paused, setPaused] = React.useState(true);
 	const [loud, setLoud] = React.useState(false);
-	const [isFullScreen, setIsFullScreen] = React.useState(false);
 
 	React.useEffect(() => {
 		getCoords();
 	}, [scroll])
 
 	const fullScreen = () => {
+		if(videoPlayer.current) {
 		videoPlayer.current.presentFullscreenPlayer();
+		}
 	}
 	const muted = () => {
 		setLoud(!loud);

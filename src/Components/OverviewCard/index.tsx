@@ -1,20 +1,27 @@
 import React from "react";
-import { StyleSheet, View, Appearance } from 'react-native';
+import { StyleSheet, View, Appearance, ImageSourcePropType } from 'react-native';
 import { BORDER_COLOR, CURRENCY, CURRENCY_FORMAT, GRAY_COLOR, LOCALE, PRIMARY_COLOR } from "../../config";
 import { Image, Text, ListItem } from 'react-native-elements';
 import { useNavigation } from "@react-navigation/native";
+import Icon from 'react-native-vector-icons/Entypo';
 
-interface IOverviewProps {
+export interface IOverviewProps {
 	title: string;
 	subtitle: string;
-	listItem: IOverviewListItem[];
+	listItem?: IOverviewListItem[];
 };
 
-interface IOverviewListItem {
+export interface IOverviewListItem {
 	title: string;
 	subtitle?: string;
 	amount: number;
-	icon?: any; //find out and change type later
+	icon?: ImageSourcePropType; //find out and change type later
+	disabled?: boolean;
+	stats?: {
+		icon: 'triangle-down' | 'triangle-up';
+		text: string;
+		color: string;
+	}
 };
 
 const chevron = {
@@ -22,29 +29,41 @@ const chevron = {
 	size: 24,
 }
 
-const Items = ({title, subtitle, amount, icon}: IOverviewListItem) => {
+export const OverviewItems = ({title, subtitle, amount, icon, stats, disabled}: IOverviewListItem) => {
 	const navigation = useNavigation();
 	return (
 		<View>
-			<ListItem onPress={() => navigation.navigate(title as never, {subtitle: subtitle, amount: amount} as never)}  bottomDivider>
-				<ListItem.Content  style={styleItem.container}>
-					<View style={{flex:1, overflow: 'hidden', maxWidth: '60%', height: 50}}>
-						<View style={styleItem.titleContainer}>
-							<ListItem.Title style={styleItem.title}>{title}</ListItem.Title>
-							{icon ? <Image source={icon} containerStyle={styleItem.iconContainer} /> : null}
+			<ListItem disabled={disabled} onPress={() => navigation.navigate(title as never, {subtitle: subtitle, amount: amount} as never)}  bottomDivider>
+				<View style={{width: '100%', flex: 1,}}>
+					<View  style={styleItem.container}>
+						<View style={{flex:1, flexShrink: 1, overflow: 'hidden', maxWidth: '60%', minHeight: 60}}>
+							<View style={styleItem.titleContainer}>
+								<Text style={styleItem.title}>{title}</Text>
+								{icon ? <Image source={icon} containerStyle={styleItem.iconContainer} /> : null}
+							</View>
+							<Text style={styleItem.subtitle}>{subtitle}</Text>
 						</View>
-						<ListItem.Subtitle><Text style={styleItem.subtitle}>{subtitle}</Text></ListItem.Subtitle>
+						<View style={styleItem.amountContainer}>
+							<Text style={styleItem.amount}>{amount.toLocaleString(LOCALE, CURRENCY_FORMAT)}</Text>
+							<ListItem.Chevron {...chevron}/>
+						</View>
 					</View>
-					<ListItem.Subtitle style={styleItem.amount}>{amount.toLocaleString(LOCALE, CURRENCY_FORMAT)}</ListItem.Subtitle>
-				</ListItem.Content>
-				<ListItem.Chevron {...chevron}/>
+					{stats ?
+						<View style={{flexDirection: 'row', }}>
+							<Icon name={stats?.icon} style={{color: stats.color, fontSize: 20, textAlign: 'center', flex: 1,}}>
+							<Text style={{color: stats?.color, fontSize: 14 }}>{stats?.text}</Text>
+							</Icon>
+						</View>
+						 :
+					null }
+				</View>
 			</ListItem>
 		</View>
 	);
 }
 
 export const OverviewCard = ({title, subtitle, listItem}: IOverviewProps) => {
-	const amount = listItem.reduce((prev, item) => prev + item.amount, 0);
+	const amount = listItem?.reduce((prev, item) => prev + item.amount, 0) || 0;
 	const isDark = Appearance.getColorScheme() === 'dark';
 	const CARD_BG_COLOR = isDark ? '#d4d4d4' : '#fff'
 
@@ -52,13 +71,13 @@ export const OverviewCard = ({title, subtitle, listItem}: IOverviewProps) => {
 		<View style={[style.cardContainer, {backgroundColor: CARD_BG_COLOR}]}>
 			<View style={style.headerContainer}>
 				<Text style={style.headTitle}>{title}</Text>
-				<Text style={style.headAmount}>{amount.toLocaleString(LOCALE, CURRENCY_FORMAT)}</Text>
+				<Text style={style.headAmount}>{amount?.toLocaleString(LOCALE, CURRENCY_FORMAT)}</Text>
 				<Text style={style.headSubtitle}>{subtitle}</Text>
 			</View>
 			<View>
-				{listItem.map(item => {
-					return <Items key={item.title} title={item.title} subtitle={item.subtitle} amount={item.amount} icon={item.icon}/>
-				})}
+				{listItem ?  listItem.map(item => {
+					return <OverviewItems key={item.title} title={item.title} subtitle={item.subtitle} amount={item.amount} icon={item.icon}/>
+				}) : null }
 			</View>
 		</View>
 	);
@@ -102,7 +121,8 @@ const styleItem = StyleSheet.create({
 		display: 'flex',
 		flexDirection: 'row',
 		justifyContent: 'space-between',
-		alignItems: 'center'
+		alignItems: 'center',
+		width: '100%'
 	},
 	titleContainer: {
 		display: 'flex',
@@ -127,14 +147,27 @@ const styleItem = StyleSheet.create({
 		marginLeft: 3,
 		// position: 'absolute',
 	},
+	amountContainer: {
+		maxWidth: '50%',
+		flexGrow: 1,
+		flexDirection: 'row',
+		flexWrap: 'wrap',
+		justifyContent: 'flex-end',
+
+	},
 	amount: {
 		fontSize: 20,
 		textAlign: 'right',
-		flex: 2,
-		maxWidth: '50%',
+		// flex: 2,
+		// maxWidth: '50%',
 		overflow: 'hidden',
 	},
 	arrow: {
 		color: PRIMARY_COLOR,
 	},
+	statContainer: {
+		flexDirection: 'row',
+		justifyContent: 'center',
+		width: '100%',
+	}
 })
