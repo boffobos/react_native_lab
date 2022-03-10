@@ -31,7 +31,7 @@ const pageHeaderOptions = (title: string, subtitle?: string): NativeStackNavigat
 export const MyNavigation = () => {
 	const user = useAppSelector(state => state.users.userName);
 	return (
-		<Stack.Navigator /* initialRouteName='Profile' */screenOptions={{headerStyle: {backgroundColor: PRIMARY_COLOR, }, }} >
+		<Stack.Navigator /*initialRouteName='Checking'*/ screenOptions={{headerStyle: {backgroundColor: PRIMARY_COLOR, }, }} >
 		{ user ? <>
 			<Stack.Screen name={BOTTOM_TABS.name} component={BottomTabs} options={{headerShown: false,}} />
 			<Stack.Screen name={SAVINGS.name} component={Savings} options={({route}) => pageHeaderOptions(SAVINGS.name, route.params.subtitle)} />
