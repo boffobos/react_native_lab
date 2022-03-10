@@ -29,6 +29,7 @@ const data = [
 		message: 'Pay day! Yay!',
 		amount: 1200.5,
 		date: '03-11-2022',
+		special: true,
 	},
 	{
 		title: 'Transfer from savings',
@@ -96,11 +97,11 @@ export const Checking = ({route}) => {
 								return (
 									<>
 										<Text style={{paddingLeft: 10, marginTop: 20, marginBottom: 10, color: GRAY_COLOR}} >{new Date(item.date).toLocaleString(LOCALE, { month:'short', day: '2-digit'})}</Text>
-										<OverviewItems key={index} disabled={true} title={item.title} titleStyle={item.amount > 0 ? {color: '#00ff00'} : undefined} amount={Math.abs(item.amount)} amountStyle={item.amount > 0 ? {color: '#00ff00'} : undefined} subtitle={item.message} isChevron={false} />
+										<OverviewItems key={index} disabled={true} title={item.title} titleStyle={item.amount > 0 ? {color: '#00ff00'} : undefined} amount={Math.abs(item.amount)} amountStyle={item.amount > 0 ? {color: '#00ff00'} : undefined} subtitle={item.message} subtitleStyle={item.special ? {color: '#00ff00'} : undefined} lineIcon={item.special ? 'new' : undefined} isChevron={false} />
 									</>
 								);
 							} else {
-							return <OverviewItems key={index} disabled={true} title={item.title} titleStyle={item.amount > 0 ? {color: '#00ff00'} : undefined} amount={Math.abs(item.amount)} amountStyle={item.amount > 0 ? {color: '#00ff00'} : undefined} subtitle={item.message} isChevron={false} />
+							return <OverviewItems key={index} disabled={true} title={item.title} titleStyle={item.amount > 0 ? {color: '#00ff00'} : undefined} amount={Math.abs(item.amount)} amountStyle={item.amount > 0 ? {color: '#00ff00'} : undefined} subtitle={item.message} subtitleStyle={item.special ? {color: '#00ff00'} : undefined} lineIcon={item.special ? 'new' : undefined} isChevron={false} />
 							}
 						})}
 					</View>

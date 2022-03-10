@@ -15,6 +15,7 @@ export interface IOverviewListItem {
 	title: string;
 	titleStyle?: TextStyle;
 	subtitle?: string;
+	subtitleStyle?: TextStyle;
 	amount: number;
 	amountStyle?: TextStyle;
 	icon?: ImageSourcePropType; //find out and change type later
@@ -25,6 +26,7 @@ export interface IOverviewListItem {
 		color: string;
 	},
 	isChevron?: boolean,
+	lineIcon?: string;
 };
 
 const chevron = {
@@ -32,19 +34,20 @@ const chevron = {
 	size: 24,
 }
 
-export const OverviewItems = ({title, titleStyle, subtitle, amount, amountStyle, icon, stats, disabled, isChevron = true }: IOverviewListItem) => {
+export const OverviewItems = ({title, titleStyle, subtitle, subtitleStyle, amount, amountStyle, icon, stats, disabled, isChevron = true, lineIcon}: IOverviewListItem) => {
 	const navigation = useNavigation();
 	return (
 		<View>
 			<ListItem disabled={disabled} onPress={() => navigation.navigate(title as never, {subtitle: subtitle, amount: amount} as never)}  bottomDivider>
 				<View style={{width: '100%', flex: 1,}}>
 					<View  style={styleItem.container}>
+						{lineIcon ? <View><Icon style={{fontSize: 20, marginRight: 10}} name={lineIcon} /></View> : null}
 						<View style={{flex:1, flexShrink: 1, overflow: 'hidden', maxWidth: '60%', minHeight: 60}}>
 							<View style={styleItem.titleContainer}>
 								<Text style={[styleItem.title, titleStyle]}>{title}</Text>
 								{icon ? <Image source={icon} containerStyle={styleItem.iconContainer} /> : null}
 							</View>
-							<Text style={styleItem.subtitle}>{subtitle}</Text>
+							<Text style={[styleItem.subtitle, subtitleStyle]}>{subtitle}</Text>
 						</View>
 						<View style={styleItem.amountContainer}>
 							<Text style={[styleItem.amount, amountStyle]}>{amount.toLocaleString(LOCALE, CURRENCY_FORMAT)}</Text>
