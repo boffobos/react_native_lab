@@ -107,8 +107,7 @@ export const Savings = ({route}) => {
 								<OverviewItems key={index} title={item.title} titleStyle={textGreen} subtitle={sub} amount={item.amount} amountStyle={textGreen} isChevron={false} disabled={true} />
 							</>
 						);
-					}
-					return <OverviewItems key={index} title={item.title} titleStyle={textGreen} subtitle={sub} amount={item.amount} amountStyle={textGreen} isChevron={false} disabled={true} />
+					} else return <OverviewItems key={index} title={item.title} titleStyle={textGreen} subtitle={sub} amount={item.amount} amountStyle={textGreen} isChevron={false} disabled={true} />
 				})}
 			</ScrollView>
 					{/* <Text style={styles.text}>Saving {amount ? amount.toLocaleString(undefined, CURRENCY_FORMAT) : null}</Text> */}
