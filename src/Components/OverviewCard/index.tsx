@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Appearance, ImageSourcePropType, TextStyle } from 'react-native';
+import { StyleSheet, View, Appearance, ImageSourcePropType, TextStyle, ViewStyle } from 'react-native';
 import { BORDER_COLOR, CURRENCY, CURRENCY_FORMAT, GRAY_COLOR, LOCALE, PRIMARY_COLOR } from "../../config";
 import { Image, Text, ListItem } from 'react-native-elements';
 import { useNavigation } from "@react-navigation/native";
@@ -12,13 +12,14 @@ export interface IOverviewProps {
 };
 
 export interface IOverviewListItem {
+	containerStyle?: ViewStyle;
 	title: string;
 	titleStyle?: TextStyle;
 	subtitle?: string;
 	subtitleStyle?: TextStyle;
 	amount: number;
 	amountStyle?: TextStyle;
-	icon?: ImageSourcePropType; //find out and change type later
+	icon?: ImageSourcePropType;
 	disabled?: boolean;
 	stats?: {
 		icon: 'triangle-down' | 'triangle-up';
@@ -34,20 +35,20 @@ const chevron = {
 	size: 24,
 }
 
-export const OverviewItems = ({title, titleStyle, subtitle, subtitleStyle, amount, amountStyle, icon, stats, disabled, isChevron = true, lineIcon}: IOverviewListItem) => {
+export const OverviewItems = ({containerStyle, title, titleStyle, subtitle, subtitleStyle, amount, amountStyle, icon, stats, disabled, isChevron = true, lineIcon}: IOverviewListItem) => {
 	const navigation = useNavigation();
 	return (
-		<View>
-			<ListItem disabled={disabled} onPress={() => navigation.navigate(title as never, {subtitle: subtitle, amount: amount} as never)}  bottomDivider>
+		// <View>
+			<ListItem disabled={disabled} style={containerStyle} onPress={() => navigation.navigate(title as never, {subtitle: subtitle, amount: amount} as never)}  bottomDivider>
 				<View style={{width: '100%', flex: 1,}}>
 					<View  style={styleItem.container}>
 						{lineIcon ? <View><Icon style={{fontSize: 20, marginRight: 10}} name={lineIcon} /></View> : null}
-						<View style={{flex:1, flexShrink: 1, overflow: 'hidden', maxWidth: '60%', minHeight: 60}}>
+						<View style={{flex:1, flexShrink: 1, overflow: 'hidden', maxWidth: '60%', justifyContent: 'center'}}>
 							<View style={styleItem.titleContainer}>
 								<Text style={[styleItem.title, titleStyle]}>{title}</Text>
 								{icon ? <Image source={icon} containerStyle={styleItem.iconContainer} /> : null}
 							</View>
-							<Text style={[styleItem.subtitle, subtitleStyle]}>{subtitle}</Text>
+							{subtitle ? <Text style={[styleItem.subtitle, subtitleStyle]}>{subtitle}</Text> : null}
 						</View>
 						<View style={styleItem.amountContainer}>
 							<Text style={[styleItem.amount, amountStyle]}>{amount.toLocaleString(LOCALE, CURRENCY_FORMAT)}</Text>
@@ -64,7 +65,7 @@ export const OverviewItems = ({title, titleStyle, subtitle, subtitleStyle, amoun
 					null }
 				</View>
 			</ListItem>
-		</View>
+		// </View>
 	);
 }
 
@@ -82,7 +83,7 @@ export const OverviewCard = ({title, subtitle, listItem}: IOverviewProps) => {
 			</View>
 			<View>
 				{listItem ?  listItem.map(item => {
-					return <OverviewItems key={item.title} title={item.title} subtitle={item.subtitle} amount={item.amount} icon={item.icon}/>
+					return <OverviewItems key={item.title} title={item.title} subtitle={item.subtitle} amount={item.amount} icon={item.icon} disabled={item.disabled}/>
 				}) : null }
 			</View>
 		</View>
