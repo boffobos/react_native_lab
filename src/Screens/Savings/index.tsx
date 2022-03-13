@@ -42,24 +42,24 @@ const transactions: ITransaction[] = [
 		date: '07-11-2021',
 		amount: 14998.95,
 	},
-	{
-		title: 'Wireless Transfer',
-		subtitle: '',
-		date: '07-10-2021',
-		amount: 80.65,
-	},
-	{
-		title: 'Phone Transfer',
-		subtitle: '',
-		date: '07-10-2021',
-		amount: 850.65,
-	},
-	{
-		title: 'Previous day balance',
-		subtitle: '',
-		date: '07-10-2021',
-		amount: 1467.65,
-	},
+	// {
+	// 	title: 'Wireless Transfer',
+	// 	subtitle: '',
+	// 	date: '07-10-2021',
+	// 	amount: 80.65,
+	// },
+	// {
+	// 	title: 'Phone Transfer',
+	// 	subtitle: '',
+	// 	date: '07-10-2021',
+	// 	amount: 850.65,
+	// },
+	// {
+	// 	title: 'Previous day balance',
+	// 	subtitle: '',
+	// 	date: '07-10-2021',
+	// 	amount: 1467.65,
+	// },
 ];
 
 const Total = ({title, value}) => {
