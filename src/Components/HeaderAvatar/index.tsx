@@ -2,50 +2,43 @@ import React from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import { Image } from "react-native-elements";
 import { ListItem, Text } from "react-native-elements";
-import { Button } from "react-native-elements";
 import { Modal } from '../components';
-import { FONT_REGULAR, PRIMARY_COLOR_LIGHT, SIGNIN } from "../../config";
-import { useAppDispatch } from "../../hooks";
+import { BORDER_COLOR, FONT_REGULAR, PRIMARY_COLOR_LIGHT, SIGNIN } from "../../config";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { userLogout } from "../../exports";
 import { useNavigation } from "@react-navigation/native";
-
-const img = require('../../Assets/Images/oval.png');
+import img from '../../Assets/Images/avatar_1.png'
 
 export const HeaderAvatar = () => {
 	const [isOpen, setIsOpen] = React.useState(false);
-	// const [isOpenDropdown, setIsOpenDropdown] = React.useState(false);
+	const [isOpenDropdown, setIsOpenDropdown] = React.useState(false);
 	const navgator = useNavigation();
 	const dispatch = useAppDispatch();
-	const toggle = (): void => {
-		setIsOpen(!isOpen);
-	};
+	const avatarUri = {uri: useAppSelector(state => state.users.avatar) || ''};
+
 	const logout = (): void => {
 		setTimeout(() => dispatch(userLogout()), 500);
-		setIsOpen(!isOpen);
-		// navgator.navigate({name: SIGNIN.name});
+		setIsOpenDropdown(!isOpenDropdown);
 	}
-	// const toggleDropdown = (): void => {
-	// 	setIsOpenDropdown(!isOpenDropdown);
-	// };
+	const navigate = ( to: never ): void => {
+		navgator.navigate(to);
+		setIsOpenDropdown(!isOpenDropdown);
+	}
+	const toggleDropdown = (): void => {
+		setIsOpenDropdown(!isOpenDropdown);
+	};
 	return (
 		<View style={style.container}>
-			<TouchableOpacity onPress={toggle}>
-				<Image source={img} style={style.image}/>
+			<TouchableOpacity onPress={toggleDropdown}>
+				<Image source={avatarUri.uri? avatarUri : img} style={style.image}/>
 			</TouchableOpacity>
-			{/* <Modal style={style.dropdown} isOpen={isOpenDropdown} close={toggleDropdown}>
-				<ListItem>
-					<ListItem.Content>
-						<ListItem.Title onPress={toggleDropdown}>Logout</ListItem.Title>
-						<ListItem.Title onPress={toggle}>Open modal</ListItem.Title>
-					</ListItem.Content>
+			<Modal style={style.dropdown} isOpen={isOpenDropdown} close={toggleDropdown} backdropStyle={style.backdrop} >
+				<ListItem onPress={() => navigate('Profile' as never)} bottomDivider>
+					<Text style={style.menuText}>Profile</Text>
 				</ListItem>
-			</Modal> */}
-			<Modal isOpen={isOpen} close={toggle} style={style.modal}>
-					<View style={style.modalTextContainer}>
-						<Text style={style.textHead}>Log out</Text>
-						<Text style={style.textAsk}>Are you sure?</Text>
-					</View>
-					<Button title={'Yes'} style={style.btn} onPress={logout}/>
+				<ListItem onPress={logout} bottomDivider>
+					<Text style={style.menuText}>Log out</Text>
+				</ListItem>
 			</Modal>
 		</View>
 	)
@@ -63,8 +56,16 @@ const style = StyleSheet.create({
 		width: 180,
 		position: 'absolute',
 		top: 95,
-		right: 0,
-
+		right: 5,
+		borderColor: BORDER_COLOR,
+		borderWidth: 2,
+		borderRadius: 10,
+	},
+	backdrop: {
+		backgroundColor: '#0002'
+	},
+	menuText: {
+		fontSize: 18,
 	},
 	modal: {
 		display: 'flex',

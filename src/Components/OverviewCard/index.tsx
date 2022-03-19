@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Appearance } from 'react-native';
-import { BORDER_COLOR, CURRENCY, CURRENCY_FORMAT, GRAY_COLOR, LOCALE, PRIMARI_COLOR } from "../../config";
+import { BORDER_COLOR, CURRENCY, CURRENCY_FORMAT, GRAY_COLOR, LOCALE, PRIMARY_COLOR } from "../../config";
 import { Image, Text, ListItem } from 'react-native-elements';
 import { useNavigation } from "@react-navigation/native";
 
@@ -18,7 +18,7 @@ interface IOverviewListItem {
 };
 
 const chevron = {
-	color: PRIMARI_COLOR,
+	color: PRIMARY_COLOR,
 	size: 24,
 }
 
@@ -135,6 +135,6 @@ const styleItem = StyleSheet.create({
 		overflow: 'hidden',
 	},
 	arrow: {
-		color: PRIMARI_COLOR,
+		color: PRIMARY_COLOR,
 	},
 })

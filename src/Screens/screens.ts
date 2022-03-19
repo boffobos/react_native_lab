@@ -6,4 +6,5 @@ export * from './Home';
 export * from './Payments';
 export * from './Savings';
 export * from './SingIn';
+export * from './Profile';
 

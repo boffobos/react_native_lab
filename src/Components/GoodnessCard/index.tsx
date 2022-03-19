@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from "react";
-import { BORDER_COLOR, GRAY_COLOR, PRIMARI_COLOR } from "../../config";
+import React from "react";
+import { BORDER_COLOR, GRAY_COLOR, PRIMARY_COLOR } from "../../config";
 import {
 	ImageSourcePropType,
 	StyleSheet,
@@ -59,7 +59,7 @@ const VideoPlay = ({video, scroll}: any) => {
 
 	const getCoords = () => {
 		if(videoRef.current){
-			videoRef.current.measureInWindow((x, y, width, height) => {
+			videoRef.current.measureInWindow((x: any, y: any, width: any, height: any) => {
 				let viewCenter = y + height/2;
 				if (viewCenter > screenCenter - 180 && viewCenter < screenCenter + 180) {
 					setPaused(false)
@@ -158,7 +158,7 @@ const bodyStyle = StyleSheet.create({
 	volIcon: {
 		width: 40,
 		height:30,
-		color: PRIMARI_COLOR,
+		color: PRIMARY_COLOR,
 		position: 'absolute',
 		bottom: 15,
 		left: '88%',

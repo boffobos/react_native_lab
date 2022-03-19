@@ -1,8 +1,8 @@
 import { createNativeStackNavigator, NativeStackNavigationOptions } from '@react-navigation/native-stack';
-import { HOME, SAVINGS, BOTTOM_TABS, PRIMARI_COLOR, CHECKING, SIGNIN } from '../config';
+import { HOME, SAVINGS, BOTTOM_TABS, PRIMARY_COLOR, CHECKING, SIGNIN, PROFILE } from '../config';
 import React from 'react';
 import { BottomTabs } from '../Navigation/BottomTabs';
-import { Savings, Checking, HeaderAvatar, BackButton, Signin } from '../exports';
+import { Savings, Checking, HeaderAvatar, BackButton, Signin, Profile } from '../exports';
 import { HeaderTitle } from '../Components/HeaderTitle';
 import { Button } from 'react-native-elements';
 import { useSelector } from 'react-redux';
@@ -18,7 +18,7 @@ const screenOptions = {
 const title = SAVINGS.name;
 const subtitle = 'rest test subs';
 
-const pageHeaderOptions = (title: string, subtitle: string): NativeStackNavigationOptions => {
+const pageHeaderOptions = (title: string, subtitle?: string): NativeStackNavigationOptions => {
 	return ({
 		headerTitle: () => <HeaderTitle title={title} subtitle={subtitle} />,
 		headerRight: () => <HeaderAvatar />,
@@ -37,11 +37,12 @@ const headerLeftButton = (func: any) => {
 export const MyNavigation = () => {
 	const user = useAppSelector(state => state.users.userName);
 	return (
-		<Stack.Navigator screenOptions={{headerStyle: {backgroundColor: PRIMARI_COLOR, }, }} >
+		<Stack.Navigator /* initialRouteName='Profile' */screenOptions={{headerStyle: {backgroundColor: PRIMARY_COLOR, }, }} >
 		{ user ? <>
 			<Stack.Screen name={BOTTOM_TABS.name} component={BottomTabs} options={{headerShown: false,}} />
 			<Stack.Screen name={SAVINGS.name} component={Savings} options={({route}) => pageHeaderOptions(SAVINGS.name, route.params.subtitle)} />
 			<Stack.Screen name={CHECKING.name} component={Checking} options={({route}) => pageHeaderOptions(CHECKING.name, route.params.subtitle)} />
+			<Stack.Screen name={PROFILE.name} component={Profile} options={() => pageHeaderOptions(PROFILE.name)} />
 		</> : <>
 		<Stack.Screen name={SIGNIN.name} component={Signin} options={() => ({headerShown: false})}/>
 		</> }
