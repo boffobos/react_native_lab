@@ -63,7 +63,7 @@ export const Accounts = ({navigation}) => {
 					{overviewData.map((item, index) => {
 						return (
 							<View key={index} style={styles.itemContainer}>
-								<OverviewItems title={item.title} subtitle={item.subtitle} amount={item.amount} icon={item.icon} stats={item.stats}/>
+								<OverviewItems title={item.title} subtitle={item.subtitle} amount={item.amount} icon={item.icon} stats={item.stats} disabled={item.disabled}/>
 							</View>
 						);
 					})}
