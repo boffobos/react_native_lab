@@ -14,7 +14,6 @@
 		7EF68E3733C33B6898317E18 /* libPods-spiral-spiralTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-spiral-spiralTests.a */; };
 		924E6C5627E109EC0076FA84 /* Launch Screen Spiral.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924E6C5527E109EC0076FA84 /* Launch Screen Spiral.storyboard */; };
 		924E6C5827E1100E0076FA84 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924E6C5727E1100E0076FA84 /* LaunchScreen.storyboard */; };
-		924E6C5A27E111690076FA84 /* Spiral logo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924E6C5927E111690076FA84 /* Spiral logo.storyboard */; };
 		92EC973727B313D4002478A6 /* SFProRounded-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92EC973427B313D4002478A6 /* SFProRounded-Light.ttf */; };
 		92EC973827B313D4002478A6 /* SFProRounded-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92EC973527B313D4002478A6 /* SFProRounded-Regular.ttf */; };
 		92EC973927B313D4002478A6 /* SF-Pro-Rounded-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 92EC973627B313D4002478A6 /* SF-Pro-Rounded-Bold.ttf */; };
@@ -56,7 +55,6 @@
 		8D60C7BD43AD4C73B5C175C9 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		924E6C5527E109EC0076FA84 /* Launch Screen Spiral.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen Spiral.storyboard"; sourceTree = "<group>"; };
 		924E6C5727E1100E0076FA84 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		924E6C5927E111690076FA84 /* Spiral logo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Spiral logo.storyboard"; sourceTree = "<group>"; };
 		92EC973427B313D4002478A6 /* SFProRounded-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProRounded-Light.ttf"; path = "../src/Assets/Fonts/SFProRounded-Light.ttf"; sourceTree = "<group>"; };
 		92EC973527B313D4002478A6 /* SFProRounded-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProRounded-Regular.ttf"; path = "../src/Assets/Fonts/SFProRounded-Regular.ttf"; sourceTree = "<group>"; };
 		92EC973627B313D4002478A6 /* SF-Pro-Rounded-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Pro-Rounded-Bold.ttf"; path = "../src/Assets/Fonts/SF-Pro-Rounded-Bold.ttf"; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 				924E6C5727E1100E0076FA84 /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				924E6C5527E109EC0076FA84 /* Launch Screen Spiral.storyboard */,
-				924E6C5927E111690076FA84 /* Spiral logo.storyboard */,
 			);
 			name = spiral;
 			sourceTree = "<group>";
@@ -301,7 +298,6 @@
 				92EC973827B313D4002478A6 /* SFProRounded-Regular.ttf in Resources */,
 				924E6C5827E1100E0076FA84 /* LaunchScreen.storyboard in Resources */,
 				92EC973927B313D4002478A6 /* SF-Pro-Rounded-Bold.ttf in Resources */,
-				924E6C5A27E111690076FA84 /* Spiral logo.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

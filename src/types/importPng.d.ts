@@ -16,3 +16,4 @@ declare module '*.mp4'
 }
 
 declare module 'react-native-video';
+declare module 'react-native-animated-splash-screen'
