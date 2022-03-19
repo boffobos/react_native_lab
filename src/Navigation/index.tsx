@@ -22,17 +22,11 @@ const pageHeaderOptions = (title: string, subtitle?: string): NativeStackNavigat
 	return ({
 		headerTitle: () => <HeaderTitle title={title} subtitle={subtitle} />,
 		headerRight: () => <HeaderAvatar />,
-		// headerBackImageSource: require('../Assets/Images/back.png'),
 		headerTintColor: 'white',
 		headerBackTitle: '',
 	});
 };
 
-const headerLeftButton = (func: any) => {
-	return (
-		<Button onPress={func.navigate(HOME.name)} title='abc'/>
-	)
-}
 
 export const MyNavigation = () => {
 	const user = useAppSelector(state => state.users.userName);

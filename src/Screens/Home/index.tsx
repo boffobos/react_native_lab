@@ -4,7 +4,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { FONT_BOLD, PRIMARY_COLOR_LIGHT, SAVINGS, CHECKING } from '../../config/index';
 import { ParamListBase } from '@react-navigation/native';
-import { OverviewCard, Greeting, GoodnessCard } from '../../Components/components';
+import { OverviewCard, Greeting, GoodnessCard, IOverviewProps } from '../../Components/components';
 import heart from '../../Assets/Images/heart.png';
 import icon from '../../Assets/Images/avatar.png';
 import image1 from '../../Assets/Images/rectangle.png';
@@ -14,7 +14,7 @@ import video from '../../Assets/Images/video.mp4'
 import video2 from '../../Assets/Images/video2.mp4'
 
 //mock data for screen
-const overviewData = {
+const overviewData: IOverviewProps = {
 	title: 'Accounts Overview',
 	subtitle: 'Total Available Cash',
 	listItem: [
@@ -33,6 +33,7 @@ const overviewData = {
 			icon: heart,
 			subtitle: 'Cash Rewards',
 			amount: 100.45,
+			disabled: true,
 		},
 	],
 };

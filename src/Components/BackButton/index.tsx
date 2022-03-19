@@ -1,16 +1,17 @@
 import { HOME } from "../../config";
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { GestureResponderEvent, StyleSheet, TouchableOpacity } from "react-native";
 import { Image } from "react-native-elements";
-import { useNavigation } from "@react-navigation/native";
 
+interface IBackButton {
+	onPress: (event: GestureResponderEvent) => void;
+}
 
-
-export const BackButton = () => {
+export const BackButton = ({onPress}: IBackButton) => {
 	// const nav = useNavigation();
-
+	console.log(onPress);
 	return (
-		<TouchableOpacity style={style.container}>
+		<TouchableOpacity onPress={onPress} style={style.container}>
 			<Image source={require('../../Assets/Images/back.png')} style={style.image} />
 		</TouchableOpacity>
 	);
