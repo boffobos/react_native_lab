@@ -50,9 +50,6 @@ export const Signin = () => {
 		}
 	}, [email, password]);
 
-	React.useEffect(() => {
-		console.log(jwt);
-	}, [])
 
 	return (
 		<SafeAreaView style={{flex: 1}}>

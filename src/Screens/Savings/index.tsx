@@ -1,5 +1,5 @@
 import { CURRENCY_FORMAT, FONT_BOLD, GRAY_COLOR, LOCALE, WHITE_COLOR } from "../../config";
-import React from "react"
+import React, {Fragment} from "react"
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native";
 import { SearchBar, Header, OverviewItems, ITransaction } from '../../exports';
@@ -42,24 +42,24 @@ const transactions: ITransaction[] = [
 		date: '07-11-2021',
 		amount: 14998.95,
 	},
-	{
-		title: 'Wireless Transfer',
-		subtitle: '',
-		date: '07-10-2021',
-		amount: 80.65,
-	},
-	{
-		title: 'Phone Transfer',
-		subtitle: '',
-		date: '07-10-2021',
-		amount: 850.65,
-	},
-	{
-		title: 'Previous day balance',
-		subtitle: '',
-		date: '07-10-2021',
-		amount: 1467.65,
-	},
+	// {
+	// 	title: 'Wireless Transfer',
+	// 	subtitle: '',
+	// 	date: '07-10-2021',
+	// 	amount: 80.65,
+	// },
+	// {
+	// 	title: 'Phone Transfer',
+	// 	subtitle: '',
+	// 	date: '07-10-2021',
+	// 	amount: 850.65,
+	// },
+	// {
+	// 	title: 'Previous day balance',
+	// 	subtitle: '',
+	// 	date: '07-10-2021',
+	// 	amount: 1467.65,
+	// },
 ];
 
 const Total = ({title, value}) => {
@@ -102,10 +102,10 @@ export const Savings = ({route}) => {
 							if(item.date === splitDate) total += item.amount;
 						});
 						return (
-							<>
-								<OverviewItems key={splitDate} containerStyle={{marginTop: 20}} title={`End of day balance - ${dateToShortFormat(item.date)}`} titleStyle={{fontSize: 14,}} amount={total} amountStyle={{fontSize: 14}} isChevron={false} disabled={true} />
-								<OverviewItems key={index} title={item.title} titleStyle={textGreen} subtitle={sub} amount={item.amount} amountStyle={textGreen} isChevron={false} disabled={true} />
-							</>
+							<Fragment key={index}>
+								<OverviewItems containerStyle={{marginTop: 20}} title={`End of day balance - ${dateToShortFormat(item.date)}`} titleStyle={{fontSize: 14,}} amount={total} amountStyle={{fontSize: 14}} isChevron={false} disabled={true} />
+								<OverviewItems title={item.title} titleStyle={textGreen} subtitle={sub} amount={item.amount} amountStyle={textGreen} isChevron={false} disabled={true} />
+							</Fragment>
 						);
 					} else return <OverviewItems key={index} title={item.title} titleStyle={textGreen} subtitle={sub} amount={item.amount} amountStyle={textGreen} isChevron={false} disabled={true} />
 				})}
